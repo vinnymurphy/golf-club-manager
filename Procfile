@@ -1,0 +1,1 @@
+web: gunicorn golf_club_manager.wsgi --log-file -

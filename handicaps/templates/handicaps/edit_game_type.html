@@ -1,0 +1,16 @@
+{% extends 'handicaps/base.html' %}
+
+{% block content %}
+    <h1>Edit Game Type</h1>
+    <p>Please complete the form below to update a game type.</p>
+    <p>Note: The result figures are limited to 2 digits, including 1 decimal place</p>
+    <h3>Rules</h3>
+    <form method="POST" class="new-game-type-form">{% csrf_token %}
+        <p>Name of game type {{ form.name }}</p>
+        <p>If the player achieves a score of {{ form.level_4 }} or more, then {{ form.level_4_result }}</p>
+        <p>If the player achieves a score of {{ form.level_3_min }} to {{ form.level_3_max }}, then {{ form.level_3_result }}</p>
+        <p>If the player achieves a score of {{ form.level_2_min }} to {{ form.level_2_max }}, then {{ form.level_2_result }}</p>
+        <p>If the player achieves a score of {{ form.level_1 }} or less, then {{ form.level_1_result }}</p>
+        <button type="submit">Update game type</button> or <a href="{% url 'settings' %}">Cancel</a>
+    </form>
+{% endblock %}

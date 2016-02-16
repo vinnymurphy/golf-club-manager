@@ -1,0 +1,21 @@
+{% extends 'handicaps/base.html' %}
+
+{% block content %}
+    <h1>Configure Grades</h1>
+    <p>Please complete the form below to configure the grading system.</p>
+    <p>If you have selected to use 3 or 4 grades, leave the remaining values for Grade D/E as 0</p>
+    <form method="POST" class="config-grade">{% csrf_token %}
+        <p>How many grades should be used? {{ form.grade_use }}</p>
+        <h3>Grade A</h3>
+        <p>Minimum {{ form.grade_a_min }} Maximum {{ form.grade_a_max }}</p><br>
+        <h3>Grade B</h3>
+        <p>Minimum {{ form.grade_b_min }} Maximum {{ form.grade_b_max }}</p><br>
+        <h3>Grade C</h3>
+        <p>Minimum {{ form.grade_c_min }} Maximum {{ form.grade_c_max }}</p><br>
+        <h3>Grade D</h3>
+        <p>Minimum {{ form.grade_d_min }} Maximum {{ form.grade_d_max }}</p><br>
+        <h3>Grade E</h3>
+        <p>Minimum {{ form.grade_e_min }} Maximum {{ form.grade_e_max }}</p>
+        <button type="submit">Save grades</button> or <a href="{% url 'settings' %}">Cancel</a>
+    </form>
+{% endblock %}

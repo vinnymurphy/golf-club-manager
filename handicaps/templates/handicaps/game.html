@@ -1,0 +1,64 @@
+{% extends 'handicaps/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <h1>Record a game</h1>
+    <h3>Instructions</h3>
+    <ol>
+        <li>Select the date of the game</li>
+        <li>Select the type of game played (refer to 
+            <a href="{% url 'settings' %}">Settings</a>)</li>
+        <li>For each member that played, enter a score</li>
+        <ol id="instructions">
+            <li>Leave the score as 0 if the member did not play</li>
+        </ol>
+        <li>Click the 'Save game' button</li>
+    </ol>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="game-specifics">
+            <h3>Game details</h3>
+            <p><label>Date of game</label>{{ game_form.game_date }}</p>
+            <p><label>Game type</label>{{ game_form.game_type }}</p>
+        </div>
+        
+        <h3>Player scores</h3>
+        <table width="270">
+            <tr>
+                <th width="200">Name</th>
+                <th width="70">Score</th>
+            </tr>
+            
+            {{ score_formset.management_form}}
+            
+            {% for score_form in score_formset %}
+                <tr>
+                    <td>{{ score_form.player }}</td>
+                    {% if score_form.player.errors %}
+                        {% for error in score_form.player.errors %}
+                            {{ error|escape }}
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <td>{{ score_form.score }}</td>
+                    {% if score_form.score.errors %}
+                        {% for error in score_form.score.errors %}
+                            {{ error|escape }}
+                        {% endfor %}
+                    {% endif %}
+                        
+                </tr>
+            {% endfor %}
+        </table>
+        </br>
+        <button type="submit" value="Save game" class="button">
+            Save game</button> or 
+        <a href="{% url 'player_list' %}">Cancel</a>
+    </form>
+{% endblock %}

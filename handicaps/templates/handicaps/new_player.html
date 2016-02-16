@@ -1,0 +1,12 @@
+{% extends 'handicaps/base.html' %}
+
+{% block content %}
+    <h1>Add New Player</h1>
+    <p>Please complete the form below to add a new player.</p>
+    <form method="POST" class="new-player-form">{% csrf_token %}
+        <p>First name {{ form.first_name }}</p>
+        <p>Last name {{ form.last_name }}</p>
+        <p>Handicap {{ form.handicap }}</p>
+        <button type="submit">Add new player</button> or <a href="{% url 'player_list' %}">Cancel</a>
+    </form>
+{% endblock %}

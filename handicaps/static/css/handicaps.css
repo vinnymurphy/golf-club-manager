@@ -1,0 +1,178 @@
+/* RESET */
+* { margin:0; padding:0; }
+a img { border-style:none; }
+a { text-decoration:none; } 
+ul li { list-style-type:none; margin:0; padding:0; }
+hr { margin:0; padding:0; display: }
+
+/* BASE TEMPLATE STYLING */
+.page-header {
+    background-color: #005252;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 1px 0px 0px 0px;
+}
+
+.page-header h1 {
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18pt;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    vertical-align: center;
+}
+
+.content-container {
+    padding-left: 15px;
+}
+
+.content-container h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content-container h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    table-layout: fixed;
+}
+
+th, tr, td {
+    padding: 5px;
+}
+
+th {
+    background-color: #216969;
+    color: #FFFFFF;
+}
+
+tr:nth-child(even) {
+    background-color: #CBE4E4;
+}
+
+tr:nth-child(odd) {
+    background-color: #96C3C3;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+#instructions {
+    padding-left: 25px;
+    list-style-type: circle;
+}
+
+/*NAVIGATION STYLE*/
+.nav {
+    padding-top: 0px;
+    margin-top: 0px;
+    vertical-align: top;
+    border: 0;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+.nav li {
+    float: left;
+}
+
+.nav li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.nav li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+button[type=submit] {
+    padding: 10px;
+}
+
+input[type=submit] {
+    padding: 10px;
+}
+
+/*SETTINGS SPECIFIC STYLING*/
+
+#settings-list-title {
+    list-style-type: square;
+    margin-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+#settings-list-body {
+    margin-left: 35px;   
+}
+
+/* RECORD A GAME SPECIFIC STYLING */
+
+.game-specifics label {
+    display: inline-block;
+    width: 100px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.game-specifics input, select {
+    display: inline-block;
+    height: 25px;
+    width: 150px;
+}
+
+.game-specifics label {
+    font-weight: normal;
+}
+
+/*Print formatting*/
+
+@media print {
+    h1, .page-header, .nav, p {
+        display: none;
+    }
+    
+    #section-to-print {
+        display: block;
+    }
+    
+    #section-to-print {
+        float: none;
+        width: auto;
+        border: 0;
+        margin: 0 5%;
+        padding-top: 1em;
+        left: 0;
+        top: 0;
+    }
+    
+    table.print {
+        font-size: 8pt;
+    }
+    
+    div.page {
+        page-break-after: always;
+        page-break-inside: avoid;
+    }
+}

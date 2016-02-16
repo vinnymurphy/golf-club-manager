@@ -1,0 +1,26 @@
+{% extends 'handicaps/base.html' %}
+
+{% block content %}
+    <h1>Players</h1>
+    <p><a href="{% url 'new_player' %}">Add New Player</a> - 
+    <a href="{% url 'inactive_players' %}">Inactive Players</a> - 
+    <a href="{% url 'game_list' %}">Game History</a></p>
+    <table width="510">
+        <tr>
+            <th width="200">Name</th>
+            <th width="100">Handicap</th>
+            <th width="100">Handicap (Rounded)</th>
+            <th width="110">Last Played</th>
+            <th width="100">Adjusted</th>
+        </tr>
+        {% for player in players %}
+        <tr>
+            <td>{{player}} - <a href="{% url 'edit_player' pk=player.pk %}">Edit</a></td>
+            <td align="center">{{player.handicap}}</td>
+            <td align="center">{{player.rounded}}</td>
+            <td align="center">{{player.recent_game}}</td>
+            <td align="center">{{player.latest_handicap_change}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

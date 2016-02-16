@@ -1,0 +1,27 @@
+{% extends 'handicaps/base.html' %}
+
+{% block content %}
+    <h1>Grades</h1>
+    <p><a href="{% url 'config_grade' %}">Configure Grades</a></p>
+    
+    <div id="section-to-print">
+        {% for grade, player_lists in grade_dict.items %}
+            <div class="page">
+                <h3>Grade {{grade}}</h3>
+                
+                <table width="50%" class="print">
+                <tr>
+                    <th width="20%">Name</th>
+                    <th width="10%">Handicap</th>
+                </tr>
+                {% for player, handicap in player_lists.items %}
+                <tr>
+                    <td>{{player}}</a></td>
+                    <td align="center">{{handicap}}</td>
+                </tr>
+                {% endfor %}
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

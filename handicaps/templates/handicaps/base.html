@@ -1,0 +1,34 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>St George Ladies Golf Club</title>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/handicaps.css' %}">
+        {% block css %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="page-header">
+            <h1>St George Social Ladies Golf Club</h1>
+        </div><div class="nav">
+            <ul>
+                <li><a href="{% url 'player_list' %}">Players</a></li>
+                <li><a href="{% url 'grade' %}">Grades</a></li>
+                <li><a href="{% url 'game' %}">Record a game</a></li>
+                <li><a href="{% url 'settings' %}">Settings</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'django.contrib.auth.views.login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="content-container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

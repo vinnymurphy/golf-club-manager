@@ -1,0 +1,11 @@
+{% extends 'handicaps/base.html' %}
+
+{% block content %}
+    <h1>Games</h1>
+    <p>See below for a list of all recorded games in descending order.</p>
+    <ul>
+        {% for game in games %}
+        <li>{{ game }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
