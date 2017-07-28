@@ -2,10 +2,10 @@
 
 {% block content %}
     <h1>Players</h1>
-    <p><a href="{% url 'new_player' %}">Add New Player</a> - 
-    <a href="{% url 'inactive_players' %}">Inactive Players</a> - 
+    <p><a href="{% url 'new_player' %}">Add New Player</a> -
+    <a href="{% url 'inactive_players' %}">Inactive Players</a> -
     <a href="{% url 'game_list' %}">Game History</a></p>
-    <table width="510">
+    <table id="id_player_table" width="510">
         <tr>
             <th width="200">Name</th>
             <th width="100">Handicap</th>
