@@ -1,7 +1,7 @@
 /* RESET */
 * { margin:0; padding:0; }
 a img { border-style:none; }
-a { text-decoration:none; } 
+a { text-decoration:none; }
 ul li { list-style-type:none; margin:0; padding:0; }
 hr { margin:0; padding:0; display: }
 
@@ -115,7 +115,7 @@ input[type=submit] {
 
 /*SETTINGS SPECIFIC STYLING*/
 
-#settings-list-title {
+.settings-list-title {
     list-style-type: square;
     margin-left: 35px;
     padding-top: 10px;
@@ -123,8 +123,8 @@ input[type=submit] {
     font-weight: bold;
 }
 
-#settings-list-body {
-    margin-left: 35px;   
+.settings-list-body {
+    margin-left: 35px;
 }
 
 /* RECORD A GAME SPECIFIC STYLING */
@@ -152,11 +152,11 @@ input[type=submit] {
     h1, .page-header, .nav, p {
         display: none;
     }
-    
+
     #section-to-print {
         display: block;
     }
-    
+
     #section-to-print {
         float: none;
         width: auto;
@@ -166,11 +166,11 @@ input[type=submit] {
         left: 0;
         top: 0;
     }
-    
+
     table.print {
         font-size: 8pt;
     }
-    
+
     div.page {
         page-break-after: always;
         page-break-inside: avoid;

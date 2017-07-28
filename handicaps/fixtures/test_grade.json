@@ -1,0 +1,15 @@
+[
+    {
+        "model": "handicaps.Grade",
+        "pk": 1,
+        "fields": {
+            "grade_use": 3,
+            "grade_a_min": 0,
+            "grade_a_max": 27,
+            "grade_b_min": 28,
+            "grade_b_max": 36,
+            "grade_c_min": 37,
+            "grade_c_max": 45
+        }
+    }
+]

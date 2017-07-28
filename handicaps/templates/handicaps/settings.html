@@ -1,15 +1,14 @@
 {% extends 'handicaps/base.html' %}
 
 {% block content %}
-    <h1>Settings</h1>
-    <p><a href="{% url 'new_game_type' %}">Add New Game Type</a> - 
+    <h1 id='page-heading'>Settings</h1>
+    <p><a href="{% url 'new_game_type' %}">Add New Game Type</a> -
     <a href="{% url 'config_grade' %}">Configure Grades</a></p>
     <p>The following game types already exist and are available:</p>
         <ul>
         {% for type in gametypes %}
-            <li id="settings-list-title">{{type}} - 
-            <a href="{% url 'edit_game_type' pk=type.pk %}">Edit</a></li>
-            <table id="settings-list-body" width="270">
+            <li class="settings-list-title">{{type}}</li>
+            <table class="settings-list-body" width="270">
                 <th width="200">Rule</th>
                 <th width="70">Result</th>
                 <tr>
@@ -29,6 +28,7 @@
                     <td>{{type.level_1_result}}</td>
                 </tr>
             </table>
+            <a href="{% url 'edit_game_type' pk=type.pk %}">Edit</a>
         {% endfor %}
         </ul>
 {% endblock %}

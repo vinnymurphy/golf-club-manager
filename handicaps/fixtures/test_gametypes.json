@@ -1,0 +1,36 @@
+[
+    {
+        "model": "handicaps.GameType",
+        "pk": 1,
+        "fields": {
+            "name": "Stableford",
+            "level_4": 41,
+            "level_4_result": -2.0,
+            "level_3_min": 39,
+            "level_3_max": 40,
+            "level_3_result": -1.0,
+            "level_2_min": 37,
+            "level_2_max": 38,
+            "level_2_result": -0.5,
+            "level_1": 36,
+            "level_1_result": 0.3
+        }
+    },
+    {
+        "model": "handicaps.GameType",
+        "pk": 2,
+        "fields": {
+            "name": "Stroke",
+            "level_4": 74,
+            "level_4_result": 0.3,
+            "level_3_min": 72,
+            "level_3_max": 73,
+            "level_3_result": -0.5,
+            "level_2_min": 70,
+            "level_2_max": 71,
+            "level_2_result": -1.0,
+            "level_1": 69,
+            "level_1_result": -2.0
+        }
+    }
+]
