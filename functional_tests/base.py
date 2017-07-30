@@ -26,11 +26,11 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.browser.refresh() # Prevents random errno 10054 error output
         self.browser.close()
 
-    def check_row_in_table(self, table_id, data_text):
-        table = self.browser.find_element_by_id(table_id)
-        columns = table.find_elements_by_tag_name('td')
-        self.assertIn(data_text, [data.text for data in columns])
-        return
+    def check_values_in_player_table(self, data_text):
+        table = self.browser.find_element_by_id("id_player_table")
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(data_text, [row.text for row in rows])
+
 
     def wait_for(self, fn):
         start_time = time.time()

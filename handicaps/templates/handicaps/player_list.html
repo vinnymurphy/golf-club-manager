@@ -1,7 +1,7 @@
 {% extends 'handicaps/base.html' %}
 
 {% block content %}
-    <h1>Players</h1>
+    <h1 id="page-heading">Players</h1>
     <p><a href="{% url 'new_player' %}">Add New Player</a> -
     <a href="{% url 'inactive_players' %}">Inactive Players</a> -
     <a href="{% url 'game_list' %}">Game History</a></p>

@@ -5,16 +5,111 @@ from selenium.webdriver.common.keys import Keys
 
 class NewGameTest(FunctionalTest):
 
-    # def test_can_record_game(self):
-    #     # Bob has just finished playing a round of golf with the club and has
-    #     # to get everyone's new handicap
-    #     self. browser.get(self.live_server_url)
-    #
-    #     # He navigates to the Record a game page
-    #     self.browser.find_element_by_link_text('Record a game').click()
-    #
-    #     # He starts filling in the form
-    #
+    def test_can_record_Stroke_game(self):
+        # Bob has just finished playing a round of golf with the club and has
+        # to get everyone's new handicap
+        self.browser.get(self.live_server_url)
+
+        # He navigates to the Record a game page
+        self.browser.find_element_by_link_text('Record a game').click()
+
+        # It makes him log in
+        inputbox = self.browser.find_element_by_id('id_username')
+        inputbox.send_keys('test')
+        inputbox = self.browser.find_element_by_id('id_password')
+        inputbox.send_keys('test')
+        inputbox.send_keys(Keys.ENTER)
+
+        # He waits for the page to load and then starts filling in the form
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('page-heading').text,
+            "Record a game"
+        ))
+
+        datebox = self.browser.find_element_by_id('id_game_date')
+        datebox.send_keys("07/29/2017")
+
+        dropdown = self.browser.find_element_by_id('id_game_type')
+        for option in dropdown.find_elements_by_tag_name('option'):
+            if option.text == "Stroke":
+                option.click()
+                break
+
+        scorebox = self.browser.find_element_by_id('id_form-0-score')
+        scorebox.send_keys('74')
+        scorebox = self.browser.find_element_by_id('id_form-3-score')
+        scorebox.send_keys('72')
+        scorebox = self.browser.find_element_by_id('id_form-5-score')
+        scorebox.send_keys('70')
+        scorebox = self.browser.find_element_by_id('id_form-7-score')
+        scorebox.send_keys('69')
+
+        self.browser.find_element_by_tag_name("button").click()
+
+        # He notices the Players page then reloads and he can see that
+        # the players scores have adjusted
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('page-heading').text,
+            "Players"
+        ))
+
+        self.check_values_in_player_table("Abbott, Tony - Edit 18.3 18 2017-07-29 0.3")
+        self.check_values_in_player_table("Chifley, Ben - Edit 18.5 18 2017-07-29 -0.5")
+        self.check_values_in_player_table("Curtin, John - Edit 40.0 40 2017-07-29 -1.0")
+        self.check_values_in_player_table("Dudd, Kevin - Edit 25.0 25 2017-07-29 -2.0")
+
+    def test_can_record_Stableford_game(self):
+        # Bob has just finished playing a round of golf with the club and has
+        # to get everyone's new handicap
+        self.browser.get(self.live_server_url)
+
+        # He navigates to the Record a game page
+        self.browser.find_element_by_link_text('Record a game').click()
+
+        # It makes him log in
+        inputbox = self.browser.find_element_by_id('id_username')
+        inputbox.send_keys('test')
+        inputbox = self.browser.find_element_by_id('id_password')
+        inputbox.send_keys('test')
+        inputbox.send_keys(Keys.ENTER)
+
+        # He waits for the page to load and then starts filling in the form
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('page-heading').text,
+            "Record a game"
+        ))
+
+        datebox = self.browser.find_element_by_id('id_game_date')
+        datebox.send_keys("06/20/2017")
+
+        dropdown = self.browser.find_element_by_id('id_game_type')
+        for option in dropdown.find_elements_by_tag_name('option'):
+            if option.text == "Stableford":
+                option.click()
+                break
+
+        scorebox = self.browser.find_element_by_id('id_form-0-score')
+        scorebox.send_keys('41')
+        scorebox = self.browser.find_element_by_id('id_form-3-score')
+        scorebox.send_keys('39')
+        scorebox = self.browser.find_element_by_id('id_form-5-score')
+        scorebox.send_keys('37')
+        scorebox = self.browser.find_element_by_id('id_form-7-score')
+        scorebox.send_keys('36')
+
+        self.browser.find_element_by_tag_name("button").click()
+
+        # He notices the Players page then reloads and he can see that
+        # the players scores have adjusted
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('page-heading').text,
+            "Players"
+        ))
+
+        self.check_values_in_player_table("Abbott, Tony - Edit 16.0 16 2017-06-20 -2.0")
+        self.check_values_in_player_table("Chifley, Ben - Edit 18.0 18 2017-06-20 -1.0")
+        self.check_values_in_player_table("Curtin, John - Edit 40.5 40 2017-06-20 -0.5")
+        self.check_values_in_player_table("Dudd, Kevin - Edit 27.3 27 2017-06-20 0.3")
 
     def test_can_create_new_game_type(self):
         # Bob wants to add a new game type called Stringball
@@ -43,9 +138,10 @@ class NewGameTest(FunctionalTest):
 
         # Upon successfully logging in he sees that the correct page has loaded
         # and starts filling in the rules
-        self.wait_for(
-            lambda: self.browser.find_element_by_id('page-heading')
-        )
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('page-heading').text,
+            "Add New Game Type"
+        ))
 
         inputbox = self.browser.find_element_by_id('id_name')
         inputbox.send_keys('Stringball')

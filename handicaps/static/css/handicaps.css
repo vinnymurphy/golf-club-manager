@@ -5,6 +5,15 @@ a { text-decoration:none; }
 ul li { list-style-type:none; margin:0; padding:0; }
 hr { margin:0; padding:0; display: }
 
+/* DISABLE DATE PICKER IN CHROME */
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+input[type="date"]::-webkit-input-placeholder{
+    visibility: hidden !important;
+}
+
 /* BASE TEMPLATE STYLING */
 .page-header {
     background-color: #005252;
