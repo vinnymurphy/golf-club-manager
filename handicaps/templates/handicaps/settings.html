@@ -28,7 +28,7 @@
                     <td>{{type.level_1_result}}</td>
                 </tr>
             </table>
-            <a href="{% url 'edit_game_type' pk=type.pk %}">Edit</a>
+            <a id="edit-{{type}}" href="{% url 'edit_game_type' pk=type.pk %}">Edit</a>
         {% endfor %}
         </ul>
 {% endblock %}
