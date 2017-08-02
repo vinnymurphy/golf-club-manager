@@ -1,7 +1,7 @@
 {% extends 'handicaps/base.html' %}
 
 {% block content %}
-    <h1>Edit Player</h1>
+    <h1 id="id_page_heading">Edit Player</h1>
     <p>Please complete the form below to add a new player.</p>
     <form method="POST">{% csrf_token %}
         <p>First name {{ form.first_name }}</p>

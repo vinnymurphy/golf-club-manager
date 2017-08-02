@@ -1,7 +1,7 @@
 {% extends 'handicaps/base.html' %}
 
 {% block content %}
-    <h1>Configure Grades</h1>
+    <h1 id="id_page_heading">Configure Grades</h1>
     <p>Please complete the form below to configure the grading system.</p>
     <p>If you have selected to use 3 or 4 grades, leave the remaining values for Grade D/E as 0</p>
     <form method="POST" class="config-grade">{% csrf_token %}
