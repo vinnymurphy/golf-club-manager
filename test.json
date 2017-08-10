@@ -1,0 +1,1135 @@
+[
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can add game",
+        "content_type": 7,
+        "codename": "add_game"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can change game",
+        "content_type": 7,
+        "codename": "change_game"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can delete game",
+        "content_type": 7,
+        "codename": "delete_game"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add game score",
+        "content_type": 8,
+        "codename": "add_gamescore"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change game score",
+        "content_type": 8,
+        "codename": "change_gamescore"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete game score",
+        "content_type": 8,
+        "codename": "delete_gamescore"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add game type",
+        "content_type": 9,
+        "codename": "add_gametype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change game type",
+        "content_type": 9,
+        "codename": "change_gametype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete game type",
+        "content_type": 9,
+        "codename": "delete_gametype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can add grade",
+        "content_type": 10,
+        "codename": "add_grade"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can change grade",
+        "content_type": 10,
+        "codename": "change_grade"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can delete grade",
+        "content_type": 10,
+        "codename": "delete_grade"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can add player",
+        "content_type": 11,
+        "codename": "add_player"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can change player",
+        "content_type": 11,
+        "codename": "change_player"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can delete player",
+        "content_type": 11,
+        "codename": "delete_player"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$ohc6R8bZv3bm$6kFifOZ9yzVSHtyE3J34PaEv6qbM+ivuGDByAEBWNsg=",
+        "last_login": "2017-07-30T20:45:51.872Z",
+        "is_superuser": true,
+        "username": "test",
+        "first_name": "",
+        "last_name": "",
+        "email": "test@test.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-07-28T19:15:32.195Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "brfx1p9v67panqgaxw75u15wlrey3w71",
+    "fields": {
+        "session_data": "ZDIwZTA1MGIyYTM4OWM2NWY4NmU2MDdlMzViN2JhNWM1MmNmODExODp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIzNzAzZTQ3NDRlZDNmYTFlNzUyZTRmMjI1Mzg5YmQ3YTQ0ODZlMWEyIn0=",
+        "expire_date": "2017-08-13T20:45:51.886Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "g4v502g1u6frjt57wznr7vo7qptae0f4",
+    "fields": {
+        "session_data": "ZDIwZTA1MGIyYTM4OWM2NWY4NmU2MDdlMzViN2JhNWM1MmNmODExODp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIzNzAzZTQ3NDRlZDNmYTFlNzUyZTRmMjI1Mzg5YmQ3YTQ0ODZlMWEyIn0=",
+        "expire_date": "2017-08-11T19:43:51.814Z"
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 1,
+    "fields": {
+        "first_name": "Edmund",
+        "last_name": "Barton",
+        "handicap": "-2.9",
+        "latest_handicap_change": "0.3",
+        "latest_game": "2017-06-05",
+        "active": true,
+        "handicap_rounded": -3
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 2,
+    "fields": {
+        "first_name": "Alfred",
+        "last_name": "Deakin",
+        "handicap": "20.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-12",
+        "active": true,
+        "handicap_rounded": 20
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 3,
+    "fields": {
+        "first_name": "Chris",
+        "last_name": "Watson",
+        "handicap": "27.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 27
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 4,
+    "fields": {
+        "first_name": "George",
+        "last_name": "Reid",
+        "handicap": "18.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 18
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 5,
+    "fields": {
+        "first_name": "Andrew",
+        "last_name": "Fisher",
+        "handicap": "11.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-13",
+        "active": true,
+        "handicap_rounded": 11
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 6,
+    "fields": {
+        "first_name": "Joseph",
+        "last_name": "Cook",
+        "handicap": "22.3",
+        "latest_handicap_change": "0.3",
+        "latest_game": "2017-07-02",
+        "active": true,
+        "handicap_rounded": 22
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 7,
+    "fields": {
+        "first_name": "Billy",
+        "last_name": "Hughes",
+        "handicap": "30.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 30
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 8,
+    "fields": {
+        "first_name": "Stanley",
+        "last_name": "Bruce",
+        "handicap": "38.3",
+        "latest_handicap_change": "0.3",
+        "latest_game": "2017-07-02",
+        "active": true,
+        "handicap_rounded": 38
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 9,
+    "fields": {
+        "first_name": "James",
+        "last_name": "Scullin",
+        "handicap": "31.0",
+        "latest_handicap_change": "-1.0",
+        "latest_game": "2017-05-05",
+        "active": true,
+        "handicap_rounded": 31
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 10,
+    "fields": {
+        "first_name": "Joseph",
+        "last_name": "Lyons",
+        "handicap": "7.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 7
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 11,
+    "fields": {
+        "first_name": "Earle",
+        "last_name": "Page",
+        "handicap": "39.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": false,
+        "handicap_rounded": 39
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 12,
+    "fields": {
+        "first_name": "Robert",
+        "last_name": "Menzies",
+        "handicap": "26.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 26
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 13,
+    "fields": {
+        "first_name": "Arthur",
+        "last_name": "Fadden",
+        "handicap": "5.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-13",
+        "active": true,
+        "handicap_rounded": 5
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 14,
+    "fields": {
+        "first_name": "John",
+        "last_name": "Curtin",
+        "handicap": "37.3",
+        "latest_handicap_change": "0.3",
+        "latest_game": "2017-07-02",
+        "active": true,
+        "handicap_rounded": 37
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 15,
+    "fields": {
+        "first_name": "Frank",
+        "last_name": "Forde",
+        "handicap": "11.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-13",
+        "active": true,
+        "handicap_rounded": 11
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 16,
+    "fields": {
+        "first_name": "Ben",
+        "last_name": "Chifley",
+        "handicap": "13.3",
+        "latest_handicap_change": "0.3",
+        "latest_game": "2017-07-02",
+        "active": true,
+        "handicap_rounded": 13
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 17,
+    "fields": {
+        "first_name": "Harold",
+        "last_name": "Holt",
+        "handicap": "35.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 35
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 18,
+    "fields": {
+        "first_name": "John",
+        "last_name": "McEwen",
+        "handicap": "10.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 10
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 19,
+    "fields": {
+        "first_name": "John",
+        "last_name": "Gorton",
+        "handicap": "9.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-13",
+        "active": true,
+        "handicap_rounded": 9
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 20,
+    "fields": {
+        "first_name": "William",
+        "last_name": "McMahon",
+        "handicap": "32.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 32
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 21,
+    "fields": {
+        "first_name": "Gough",
+        "last_name": "Whitlam",
+        "handicap": "40.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 40
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 22,
+    "fields": {
+        "first_name": "Malcolm",
+        "last_name": "Fraser",
+        "handicap": "9.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-13",
+        "active": true,
+        "handicap_rounded": 9
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 23,
+    "fields": {
+        "first_name": "Bob",
+        "last_name": "Hawke",
+        "handicap": "20.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 20
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 24,
+    "fields": {
+        "first_name": "Paul",
+        "last_name": "Keating",
+        "handicap": "45.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 45
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 25,
+    "fields": {
+        "first_name": "John",
+        "last_name": "Howard",
+        "handicap": "1.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 1
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 26,
+    "fields": {
+        "first_name": "Kevin",
+        "last_name": "Dudd",
+        "handicap": "25.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-13",
+        "active": true,
+        "handicap_rounded": 25
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 27,
+    "fields": {
+        "first_name": "Julia",
+        "last_name": "Gillard",
+        "handicap": "22.0",
+        "latest_handicap_change": "-2.0",
+        "latest_game": "2017-07-13",
+        "active": true,
+        "handicap_rounded": 22
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 28,
+    "fields": {
+        "first_name": "Tony",
+        "last_name": "Abbott",
+        "handicap": "12.9",
+        "latest_handicap_change": "0.3",
+        "latest_game": "2016-03-03",
+        "active": true,
+        "handicap_rounded": 13
+    }
+},
+{
+    "model": "handicaps.player",
+    "pk": 29,
+    "fields": {
+        "first_name": "Malcolm",
+        "last_name": "Turnbull",
+        "handicap": "15.0",
+        "latest_handicap_change": null,
+        "latest_game": null,
+        "active": true,
+        "handicap_rounded": 15
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 1,
+    "fields": {
+        "game_date": "2017-07-30",
+        "game_type": 1
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 2,
+    "fields": {
+        "game_date": "2017-07-13",
+        "game_type": 2
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 3,
+    "fields": {
+        "game_date": "2016-05-10",
+        "game_type": 1
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 4,
+    "fields": {
+        "game_date": "2017-07-12",
+        "game_type": 2
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 5,
+    "fields": {
+        "game_date": "2017-07-02",
+        "game_type": 1
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 6,
+    "fields": {
+        "game_date": "2017-06-05",
+        "game_type": 1
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 7,
+    "fields": {
+        "game_date": "2016-03-03",
+        "game_type": 1
+    }
+},
+{
+    "model": "handicaps.game",
+    "pk": 8,
+    "fields": {
+        "game_date": "2017-05-05",
+        "game_type": 1
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 1,
+    "fields": {
+        "player": 28,
+        "game": 1,
+        "score": 34
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 2,
+    "fields": {
+        "player": 1,
+        "game": 1,
+        "score": 37
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 3,
+    "fields": {
+        "player": 8,
+        "game": 1,
+        "score": 39
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 4,
+    "fields": {
+        "player": 16,
+        "game": 1,
+        "score": 42
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 5,
+    "fields": {
+        "player": 14,
+        "game": 2,
+        "score": 42
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 6,
+    "fields": {
+        "player": 2,
+        "game": 2,
+        "score": 42
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 7,
+    "fields": {
+        "player": 26,
+        "game": 2,
+        "score": 42
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 8,
+    "fields": {
+        "player": 13,
+        "game": 2,
+        "score": 42
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 9,
+    "fields": {
+        "player": 5,
+        "game": 2,
+        "score": 42
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 10,
+    "fields": {
+        "player": 15,
+        "game": 2,
+        "score": 2
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 11,
+    "fields": {
+        "player": 22,
+        "game": 2,
+        "score": 42
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 12,
+    "fields": {
+        "player": 27,
+        "game": 2,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 13,
+    "fields": {
+        "player": 19,
+        "game": 2,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 14,
+    "fields": {
+        "player": 28,
+        "game": 3,
+        "score": 56
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 15,
+    "fields": {
+        "player": 1,
+        "game": 3,
+        "score": 56
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 16,
+    "fields": {
+        "player": 8,
+        "game": 3,
+        "score": 56
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 17,
+    "fields": {
+        "player": 16,
+        "game": 3,
+        "score": 56
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 18,
+    "fields": {
+        "player": 28,
+        "game": 4,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 19,
+    "fields": {
+        "player": 1,
+        "game": 4,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 20,
+    "fields": {
+        "player": 8,
+        "game": 4,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 21,
+    "fields": {
+        "player": 16,
+        "game": 4,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 22,
+    "fields": {
+        "player": 6,
+        "game": 4,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 23,
+    "fields": {
+        "player": 14,
+        "game": 4,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 24,
+    "fields": {
+        "player": 2,
+        "game": 4,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 25,
+    "fields": {
+        "player": 28,
+        "game": 5,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 26,
+    "fields": {
+        "player": 1,
+        "game": 5,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 27,
+    "fields": {
+        "player": 8,
+        "game": 5,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 28,
+    "fields": {
+        "player": 16,
+        "game": 5,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 29,
+    "fields": {
+        "player": 6,
+        "game": 5,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 30,
+    "fields": {
+        "player": 14,
+        "game": 5,
+        "score": 36
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 31,
+    "fields": {
+        "player": 28,
+        "game": 6,
+        "score": 45
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 32,
+    "fields": {
+        "player": 1,
+        "game": 6,
+        "score": 4
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 33,
+    "fields": {
+        "player": 28,
+        "game": 7,
+        "score": 30
+    }
+},
+{
+    "model": "handicaps.gamescore",
+    "pk": 34,
+    "fields": {
+        "player": 9,
+        "game": 8,
+        "score": 40
+    }
+},
+{
+    "model": "handicaps.gametype",
+    "pk": 1,
+    "fields": {
+        "name": "Stableford",
+        "create_date": "2017-07-28T17:36:25.567Z",
+        "active": true,
+        "level_4": 41,
+        "level_4_result": "-2.0",
+        "level_3_min": 39,
+        "level_3_max": 40,
+        "level_3_result": "-1.0",
+        "level_2_min": 37,
+        "level_2_max": 38,
+        "level_2_result": "-0.5",
+        "level_1": 36,
+        "level_1_result": "0.3"
+    }
+},
+{
+    "model": "handicaps.gametype",
+    "pk": 2,
+    "fields": {
+        "name": "Stroke",
+        "create_date": "2017-07-28T17:36:25.568Z",
+        "active": true,
+        "level_4": 74,
+        "level_4_result": "0.3",
+        "level_3_min": 72,
+        "level_3_max": 73,
+        "level_3_result": "-0.5",
+        "level_2_min": 70,
+        "level_2_max": 71,
+        "level_2_result": "-1.0",
+        "level_1": 69,
+        "level_1_result": "-2.0"
+    }
+},
+{
+    "model": "handicaps.grade",
+    "pk": 1,
+    "fields": {
+        "grade_use": 4,
+        "grade_a_min": 0,
+        "grade_a_max": 25,
+        "grade_b_min": 26,
+        "grade_b_max": 33,
+        "grade_c_min": 34,
+        "grade_c_max": 40,
+        "grade_d_min": 41,
+        "grade_d_max": 45,
+        "grade_e_min": 0,
+        "grade_e_max": 0
+    }
+}
+]
