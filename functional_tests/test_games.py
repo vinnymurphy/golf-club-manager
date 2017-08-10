@@ -116,6 +116,25 @@ class GameTest(FunctionalTest):
             "tr"
         )
 
+    def test_can_view_game_history(self):
+        # Bob can't remember if he recorded the game played on 30 July 2017,
+        # so he loads up the website to check. He clicks the relevant link
+        self.browser.get(self.live_server_url)
+
+        self.browser.find_element_by_link_text('Game History').click()
+
+        # Page reloads to show Bob that he did record that game after all
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            'Games'
+        ))
+
+        list_items = self.browser.find_elements_by_tag_name('li')
+        self.assertIn(
+            '2017-07-30 - Stableford',
+            [data.text for data in list_items]
+        )
+
 
 class GameTypeTest(FunctionalTest):
 

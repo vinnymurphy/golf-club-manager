@@ -14,7 +14,8 @@ class FunctionalTest(StaticLiveServerTestCase):
         'test_players.json',
         'test_gametypes.json',
         'test_grade.json',
-        'test_user.json'
+        'test_user.json',
+        'test_games.json'
         ]
 
     def setUp(self):
