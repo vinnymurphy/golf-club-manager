@@ -30,6 +30,7 @@ class GameTest(FunctionalTest):
         self.replace_value_in_form('id_form-3-score', '72')
         self.replace_value_in_form('id_form-5-score', '70')
         self.replace_value_in_form('id_form-7-score', '69')
+        self.replace_value_in_form('id_form-8-score', '0')
 
         self.browser.find_element_by_tag_name("button").click()
 
@@ -58,6 +59,11 @@ class GameTest(FunctionalTest):
         self.check_values_in_table(
             "id_player_table",
             "Dudd, Kevin - Edit 25.0 25 2017-07-29 -2.0",
+            "tr"
+        )
+        self.check_values_in_table(
+            "id_player_table",
+            "Fadden, Arthur - Edit 7.0 7 None None",
             "tr"
         )
 

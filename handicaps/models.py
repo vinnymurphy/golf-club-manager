@@ -10,33 +10,27 @@ class Player(models.Model):
     latest_game = models.DateField(null=True)
     active = models.BooleanField(default=True)
     handicap_rounded = models.IntegerField()
-    
-    @property
-    def full_name_firstlast(self):
-        return ''.join(
-            [self.first_name,' ', self.last_name]
-            )
-    
+
     @property
     def full_name_lastfirst(self):
         return ''.join(
             [self.last_name,', ', self.first_name]
             )
-    
+
     @property
     def recent_game(self):
         return str(self.latest_game)
-    
+
     # This rounded property is a legacy item, only used for
     # display purposes in the various views. This should be
     # replaced with the handicap_rounded value at some point
     @property
     def rounded(self):
         return int(round(self.handicap))
-    
+
     def __str__(self):
         return self.full_name_lastfirst
-    
+
     # Need to override the default save function to allow
     # the handicap_rounded field to be autopopulated based
     # on the value within handicap
@@ -47,7 +41,7 @@ class Player(models.Model):
 class Game(models.Model):
     game_date = models.DateField()
     game_type = models.ForeignKey('GameType')
-    
+
     def __str__(self):
         return "%s - %s" % (self.game_date, self.game_type)
 
@@ -55,7 +49,7 @@ class GameScore(models.Model):
     player = models.ForeignKey('Player')
     game = models.ForeignKey('Game')
     score = models.IntegerField()
-    
+
     def __str__(self):
         return "%s - %s - %s" % (self.player, self.game, self.score)
 
@@ -77,7 +71,7 @@ class GameType(models.Model):
     level_1 = models.IntegerField()
     level_1_result = models.DecimalField(max_digits=2,
         decimal_places=1)
-    
+
     def __str__(self):
         return self.name
 
@@ -101,6 +95,6 @@ class Grade(models.Model):
     grade_d_max = models.IntegerField(default=0)
     grade_e_min = models.IntegerField(default=0)
     grade_e_max = models.IntegerField(default=0)
-    
+
     def __str__(self):
         return str(self.grade_use)
