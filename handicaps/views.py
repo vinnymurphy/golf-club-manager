@@ -14,6 +14,7 @@ from .forms import NewGameTypeForm, NewPlayerForm, NewGameForm, \
 from .calculator import handicap_calculator
 
 
+@login_required
 def player_list(request):
     players = Player.objects.filter(active=True).order_by('last_name')
 
@@ -89,6 +90,7 @@ def game(request):
 
         return render(request, 'handicaps/game.html', context)
 
+@login_required
 def settings(request):
     gametypes = GameType.objects.filter(active=True).order_by(
         'create_date')
@@ -167,11 +169,13 @@ def edit_player(request, pk):
 
         return render(request, 'handicaps/edit_player.html', context)
 
+@login_required
 def game_list(request):
     games = Game.objects.order_by('-game_date')
 
     return render(request, 'handicaps/game_list.html', {'games': games})
 
+@login_required
 def inactive_players(request):
     players = Player.objects.filter(active=False).order_by('last_name')
 
@@ -181,6 +185,7 @@ def inactive_players(request):
 
     return render(request, 'handicaps/inactive_players.html', context)
 
+@login_required
 def grade(request):
     grades = Grade.objects.get(pk=1)
 
@@ -261,6 +266,7 @@ def grade(request):
 
     return render(request, 'handicaps/grade.html', context)
 
+@login_required
 def config_grade(request):
     grade = Grade.objects.get(pk=1)
 

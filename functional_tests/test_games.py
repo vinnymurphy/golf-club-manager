@@ -8,13 +8,10 @@ class GameTest(FunctionalTest):
     def test_can_record_Stroke_game(self):
         # Bob has just finished playing a round of golf with the club and has
         # to get everyone's new handicap
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He navigates to the Record a game page
         self.browser.find_element_by_link_text('Record a game').click()
-
-        # It makes him log in
-        self.login()
 
         # He waits for the page to load and then starts filling in the form
         self.wait_for(lambda: self.assertEqual(
@@ -70,13 +67,10 @@ class GameTest(FunctionalTest):
     def test_can_record_Stableford_game(self):
         # Bob has just finished playing a round of golf with the club and has
         # to get everyone's new handicap
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He navigates to the Record a game page
         self.browser.find_element_by_link_text('Record a game').click()
-
-        # It makes him log in
-        self.login()
 
         # He waits for the page to load and then starts filling in the form
         self.wait_for(lambda: self.assertEqual(
@@ -125,7 +119,7 @@ class GameTest(FunctionalTest):
     def test_can_view_game_history(self):
         # Bob can't remember if he recorded the game played on 30 July 2017,
         # so he loads up the website to check. He clicks the relevant link
-        self.browser.get(self.live_server_url)
+        self.login()
 
         self.browser.find_element_by_link_text('Game History').click()
 
@@ -146,7 +140,7 @@ class GameTypeTest(FunctionalTest):
 
     def test_can_view_game_types(self):
         # Bob wants to add a new game type called Stringball
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He looks at the available content and eventually clicks the Settings
         # button
@@ -161,7 +155,7 @@ class GameTypeTest(FunctionalTest):
 
     def test_can_create_new_game_type(self):
         # Bob wants to add a new game type called Stringball
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He looks at the available content and eventually clicks the Settings
         # button
@@ -169,8 +163,6 @@ class GameTypeTest(FunctionalTest):
 
         # Bob clicks the button to add a new game type. He is prompted to log in
         self.browser.find_element_by_link_text('Add New Game Type').click()
-
-        self.login()
 
         # Upon successfully logging in he sees that the correct page has loaded
         # and starts filling in the rules
@@ -203,7 +195,7 @@ class GameTypeTest(FunctionalTest):
 
     def test_can_edit_game_type(self):
         # Bob wants to rename the Stableford game type to Stringball
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He clicks the settings button
         self.browser.find_element_by_link_text('Settings').click()
@@ -211,8 +203,6 @@ class GameTypeTest(FunctionalTest):
         # Bob clicks the Edit button next to Stableford.
         # He is prompted to log in
         self.browser.find_element_by_id('edit-Stableford').click()
-
-        self.login()
 
         # Upon successfully logging in he sees that the correct page has loaded
         # and renames the game type

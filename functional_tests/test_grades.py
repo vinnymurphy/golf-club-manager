@@ -8,7 +8,7 @@ class GradesTest(FunctionalTest):
     def test_can_view_grades(self):
         # Bob wants to look who falls within the current 3 grades ahead of
         # one of their competitive GameScore
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He clicks the Grades button in the navigation bar
         self.browser.find_element_by_link_text('Grades').click()
@@ -33,7 +33,7 @@ class GradesTest(FunctionalTest):
     def test_can_modify_grades(self):
         # Bob has to change the grading system as too many people are falling
         # within Grade A
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He navigates to settings and then to configure grades
         self.browser.find_element_by_link_text('Grades').click()
@@ -58,7 +58,7 @@ class GradesTest(FunctionalTest):
     def test_can_use_4_grades(self):
         # Bob has to change the grading system as too many people are falling
         # within Grade A
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He navigates to settings and then to configure grades
         self.browser.find_element_by_link_text('Grades').click()
@@ -103,7 +103,7 @@ class GradesTest(FunctionalTest):
     def test_can_use_5_grades(self):
         # Bob has to change the grading system as too many people are falling
         # within Grade A
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He navigates to settings and then to configure grades
         self.browser.find_element_by_link_text('Grades').click()

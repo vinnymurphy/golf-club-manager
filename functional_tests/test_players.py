@@ -9,11 +9,9 @@ class PlayersTest(FunctionalTest):
         # Bob has a visitor coming to play golf for a couple of weeks and would
         # like to add them to the system. He loads up the website and clicks
         # the link to add a players
-        self.browser.get(self.live_server_url)
-        self.browser.find_element_by_link_text('Add New Player').click()
-
-        # Bob logs in, fills in the details and saves
         self.login()
+
+        self.browser.find_element_by_link_text('Add New Player').click()
 
         self.wait_for(lambda: self.assertEqual(
             self.browser.find_element_by_id('id_page_heading').text,
@@ -36,7 +34,7 @@ class PlayersTest(FunctionalTest):
         # Bob wants to review all activate players, as he can't remember if he
         # already updated the system to have Earle Page as inactive. He loads
         # up the website
-        self.browser.get(self.live_server_url)
+        self.login()
 
         # He's immediately presented with the active player list and their
         # scores
@@ -50,9 +48,6 @@ class PlayersTest(FunctionalTest):
         )
 
         self.browser.find_element_by_id('id_player_11').click()
-
-        # Prompts him to log in
-        self.login()
 
         # He's presented with the Edit Player screen pre-populated with Earle's
         # details and sees that the Active box is ticked

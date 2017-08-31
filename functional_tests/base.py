@@ -44,11 +44,13 @@ class FunctionalTest(StaticLiveServerTestCase):
                 time.sleep(0.5)
 
     def login(self):
+        self.browser.get(self.live_server_url)
         inputbox = self.browser.find_element_by_id('id_username')
         inputbox.send_keys('test')
         inputbox = self.browser.find_element_by_id('id_password')
         inputbox.send_keys('test')
         inputbox.send_keys(Keys.ENTER)
+        time.sleep(0.5)
 
     def replace_value_in_form(self, element_id, new_value):
         element = self.browser.find_element_by_id(element_id)
