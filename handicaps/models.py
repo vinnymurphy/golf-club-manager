@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Player(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -21,13 +22,6 @@ class Player(models.Model):
     def recent_game(self):
         return str(self.latest_game)
 
-    # This rounded property is a legacy item, only used for
-    # display purposes in the various views. This should be
-    # replaced with the handicap_rounded value at some point
-    @property
-    def rounded(self):
-        return int(round(self.handicap))
-
     def __str__(self):
         return self.full_name_lastfirst
 
@@ -38,12 +32,14 @@ class Player(models.Model):
         self.handicap_rounded = int(round(self.handicap))
         super(Player, self).save(*args, **kwargs)
 
+
 class Game(models.Model):
     game_date = models.DateField()
     game_type = models.ForeignKey('GameType')
 
     def __str__(self):
         return "%s - %s" % (self.game_date, self.game_type)
+
 
 class GameScore(models.Model):
     player = models.ForeignKey('Player')
@@ -52,6 +48,7 @@ class GameScore(models.Model):
 
     def __str__(self):
         return "%s - %s - %s" % (self.player, self.game, self.score)
+
 
 class GameType(models.Model):
     name = models.CharField(max_length=15)
@@ -74,6 +71,7 @@ class GameType(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Grade(models.Model):
     USE3 = 3

@@ -197,7 +197,7 @@ def grade(request):
     e_dict = collections.OrderedDict()
 
     a_dict = {
-        player.full_name_lastfirst: player.rounded for player in Player.objects.filter(
+        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
         active=True,
         handicap_rounded__gte = grades.grade_a_min,
         handicap_rounded__lte = grades.grade_a_max
@@ -205,7 +205,7 @@ def grade(request):
     }
 
     b_dict = {
-        player.full_name_lastfirst: player.rounded for player in Player.objects.filter(
+        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
         active=True,
         handicap_rounded__gte = grades.grade_b_min,
         handicap_rounded__lte = grades.grade_b_max
@@ -213,7 +213,7 @@ def grade(request):
     }
 
     c_dict = {
-        player.full_name_lastfirst: player.rounded for player in Player.objects.filter(
+        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
         active=True,
         handicap_rounded__gte = grades.grade_c_min,
         handicap_rounded__lte = grades.grade_c_max
@@ -221,7 +221,7 @@ def grade(request):
     }
 
     d_dict = {
-        player.full_name_lastfirst: player.rounded for player in Player.objects.filter(
+        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
         active=True,
         handicap_rounded__gte = grades.grade_d_min,
         handicap_rounded__lte = grades.grade_d_max
@@ -229,7 +229,7 @@ def grade(request):
     }
 
     e_dict = {
-        player.full_name_lastfirst: player.rounded for player in Player.objects.filter(
+        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
         active=True,
         handicap_rounded__gte = grades.grade_e_min,
         handicap_rounded__lte = grades.grade_e_max
@@ -247,16 +247,16 @@ def grade(request):
         grade_dict['B'] = b_ordered
         grade_dict['C'] = c_ordered
     elif grades.grade_use == 4:
-        grade_dict['A'] = a_dict
-        grade_dict['B'] = b_dict
-        grade_dict['C'] = c_dict
-        grade_dict['D'] = d_dict
+        grade_dict['A'] = a_ordered
+        grade_dict['B'] = b_ordered
+        grade_dict['C'] = c_ordered
+        grade_dict['D'] = d_ordered
     else:
-        grade_dict['A'] = a_dict
-        grade_dict['B'] = b_dict
-        grade_dict['C'] = c_dict
-        grade_dict['D'] = d_dict
-        grade_dict['E'] = e_dict
+        grade_dict['A'] = a_ordered
+        grade_dict['B'] = b_ordered
+        grade_dict['C'] = c_ordered
+        grade_dict['D'] = d_ordered
+        grade_dict['E'] = e_ordered
 
     context = {
         'grades': grades,
