@@ -21,7 +21,7 @@
             <td align="center">{{player.handicap_rounded}}</td>
             <td align="center">{{player.recent_game}}</td>
             <td align="center">{{player.latest_handicap_change}}</td>
-            <td><a href="{% url 'edit_player' pk=player.pk %}" id="id_player_{{player.pk}}">Edit</a> / Expand</td>
+            <td><a href="{% url 'edit_player' pk=player.pk %}" id="id_player_{{player.pk}}">Edit</a> / <a href="{% url 'expand_player' pk=player.pk %}" id="id_expand_{{player.pk}}">Expand</a></td>
         </tr>
         {% endfor %}
     </table>

@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^edit_game_type/(?P<pk>[0-9]+)/edit$', views.edit_game_type, name='edit_game_type'),
     url(r'^grade/', views.grade, name='grade'),
     url(r'^config_grade/', views.config_grade, name='config_grade'),
+    url(r'^expand_player/(?P<pk>[0-9]+)/', views.expand_player, name='expand_player'),
     ]

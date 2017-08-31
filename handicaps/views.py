@@ -283,3 +283,13 @@ def config_grade(request):
         }
 
         return render(request, 'handicaps/config_grade.html', context)
+
+@login_required
+def expand_player(request, pk):
+    player = get_object_or_404(Player, pk=pk)
+    game_history = GameScore.objects.filter(player=pk).order_by('-game__game_date')
+    context = {
+        'player': player,
+        'game_history': game_history,
+    }
+    return render(request, 'handicaps/expand_player.html', context)

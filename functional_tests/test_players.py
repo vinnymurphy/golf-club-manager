@@ -77,3 +77,15 @@ class PlayersTest(FunctionalTest):
             'Page, Earle',
             'td'
         )
+
+    def test_can_view_expanded_player(self):
+        self.login()
+
+        # Bob wants to look at the list of games that Tony Abbott played
+        self.browser.find_element_by_id('id_expand_28').click()
+
+        # Tony's game history page loads up
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('id_page_heading').text,
+            "Tony Abbott"
+        ))
