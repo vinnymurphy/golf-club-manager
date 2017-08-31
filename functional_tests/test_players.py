@@ -26,7 +26,7 @@ class PlayersTest(FunctionalTest):
         # Bob checks to see the visitor is in the active player list
         self.check_values_in_table(
             'id_player_table',
-            'Obama, Barack - Edit',
+            'Obama, Barack',
             'td'
         )
 
@@ -43,7 +43,7 @@ class PlayersTest(FunctionalTest):
         # He sees that Earle is still listed, and clicks the edit button
         self.check_values_in_table(
             'id_player_table',
-            'Page, Earle - Edit',
+            'Page, Earle',
             'td'
         )
 
@@ -69,11 +69,11 @@ class PlayersTest(FunctionalTest):
         table = self.browser.find_element_by_id('id_player_table')
         columns = table.find_elements_by_tag_name('td')
         self.assertNotIn(
-            'Page, Earle - Edit', [column.text for column in columns])
+            'Page, Earle', [column.text for column in columns])
 
         self.browser.find_element_by_link_text('Inactive Players').click()
         self.check_values_in_table(
             'id_inactive_player_table',
-            'Page, Earle - Edit',
+            'Page, Earle',
             'td'
         )

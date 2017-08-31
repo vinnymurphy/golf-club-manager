@@ -40,27 +40,27 @@ class GameTest(FunctionalTest):
 
         self.check_values_in_table(
             "id_player_table",
-            "Abbott, Tony - Edit 18.3 18 2017-07-29 0.3",
+            "Abbott, Tony 18.3 18 2017-07-29 0.3 Edit / Expand",
             "tr"
         )
         self.check_values_in_table(
             "id_player_table",
-            "Chifley, Ben - Edit 18.5 18 2017-07-29 -0.5",
+            "Chifley, Ben 18.5 18 2017-07-29 -0.5 Edit / Expand",
             "tr"
         )
         self.check_values_in_table(
             "id_player_table",
-            "Curtin, John - Edit 40.0 40 2017-07-29 -1.0",
+            "Curtin, John 40.0 40 2017-07-29 -1.0 Edit / Expand",
             "tr"
         )
         self.check_values_in_table(
             "id_player_table",
-            "Dudd, Kevin - Edit 25.0 25 2017-07-29 -2.0",
+            "Dudd, Kevin 25.0 25 2017-07-29 -2.0 Edit / Expand",
             "tr"
         )
         self.check_values_in_table(
             "id_player_table",
-            "Fadden, Arthur - Edit 7.0 7 None None",
+            "Fadden, Arthur 7.0 7 None None Edit / Expand",
             "tr"
         )
 
@@ -98,21 +98,21 @@ class GameTest(FunctionalTest):
 
         self.check_values_in_table(
             "id_player_table",
-            "Abbott, Tony - Edit 16.0 16 2017-06-20 -2.0",
+            "Abbott, Tony 16.0 16 2017-06-20 -2.0 Edit / Expand",
             "tr"
         )
         self.check_values_in_table("id_player_table",
-            "Chifley, Ben - Edit 18.0 18 2017-06-20 -1.0",
+            "Chifley, Ben 18.0 18 2017-06-20 -1.0 Edit / Expand",
             "tr"
         )
         self.check_values_in_table(
             "id_player_table",
-            "Curtin, John - Edit 40.5 40 2017-06-20 -0.5",
+            "Curtin, John 40.5 40 2017-06-20 -0.5 Edit / Expand",
             "tr"
         )
         self.check_values_in_table(
             "id_player_table",
-            "Dudd, Kevin - Edit 27.3 27 2017-06-20 0.3",
+            "Dudd, Kevin 27.3 27 2017-06-20 0.3 Edit / Expand",
             "tr"
         )
 

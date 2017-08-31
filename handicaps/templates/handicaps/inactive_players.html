@@ -6,19 +6,21 @@
     <a href="{% url 'player_list' %}">Active Players</a></p>
     <table id="id_inactive_player_table" width="510">
         <tr>
-            <th width="200">Name</th>
+            <th width="170">Name</th>
             <th width="100">Handicap</th>
             <th width="100">Handicap (Rounded)</th>
             <th width="110">Last Played</th>
             <th width="100">Adjusted</th>
+            <th width="110">Controls</th>
         </tr>
         {% for player in players %}
         <tr>
-            <td>{{player}} - <a href="{% url 'edit_player' pk=player.pk %}">Edit</a></td>
+            <td>{{player}}</td>
             <td align="center">{{player.handicap}}</td>
-            <td align="center">{{player.rounded}}</td>
+            <td align="center">{{player.handicap_rounded}}</td>
             <td align="center">{{player.recent_game}}</td>
             <td align="center">{{player.latest_handicap_change}}</td>
+            <td><a href="{% url 'edit_player' pk=player.pk %}" id="id_player_{{player.pk}}">Edit</a> / Expand</td>
         </tr>
         {% endfor %}
     </table>
