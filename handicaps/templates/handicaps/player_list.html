@@ -17,7 +17,7 @@
         <tr>
             <td>{{player}} - <a href="{% url 'edit_player' pk=player.pk %}" id="id_player_{{player.pk}}">Edit</a></td>
             <td align="center">{{player.handicap}}</td>
-            <td align="center">{{player.rounded}}</td>
+            <td align="center">{{player.handicap_rounded}}</td>
             <td align="center">{{player.recent_game}}</td>
             <td align="center">{{player.latest_handicap_change}}</td>
         </tr>
