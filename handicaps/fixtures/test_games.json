@@ -33,5 +33,14 @@
             "game": 1,
             "score": 39
         }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 4,
+        "fields": {
+            "player": 28,
+            "game": 1,
+            "score": 36
+        }
     }
 ]

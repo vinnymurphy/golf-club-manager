@@ -78,7 +78,7 @@ class PlayersTest(FunctionalTest):
             'td'
         )
 
-    def test_can_view_expanded_player(self):
+    def test_can_expand_player(self):
         self.login()
 
         # Bob wants to look at the list of games that Tony Abbott played
@@ -89,3 +89,8 @@ class PlayersTest(FunctionalTest):
             self.browser.find_element_by_id('id_page_heading').text,
             "Tony Abbott"
         ))
+        self.check_values_in_table(
+            'id_expanded_player_table',
+            '30 Jul 2017 Stableford 36',
+            'tr'
+        )
