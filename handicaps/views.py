@@ -5,13 +5,13 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.forms import formset_factory
 from django.db import IntegrityError, transaction
-import collections
 
 
 from .models import Player, GameType, GameScore, Game, Grade
 from .forms import NewGameTypeForm, NewPlayerForm, NewGameForm, \
     NewGameScoreForm, EditPlayerForm, GradeForm
 from .calculator import handicap_calculator
+from .grade import get_graded_list
 
 
 @login_required
@@ -187,81 +187,9 @@ def inactive_players(request):
 
 @login_required
 def grade(request):
-    grades = Grade.objects.get(pk=1)
-
-    grade_dict = collections.OrderedDict()
-    a_dict = collections.OrderedDict()
-    b_dict = collections.OrderedDict()
-    c_dict = collections.OrderedDict()
-    d_dict = collections.OrderedDict()
-    e_dict = collections.OrderedDict()
-
-    a_dict = {
-        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
-        active=True,
-        handicap_rounded__gte = grades.grade_a_min,
-        handicap_rounded__lte = grades.grade_a_max
-        ).order_by('last_name')
-    }
-
-    b_dict = {
-        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
-        active=True,
-        handicap_rounded__gte = grades.grade_b_min,
-        handicap_rounded__lte = grades.grade_b_max
-        ).order_by('last_name')
-    }
-
-    c_dict = {
-        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
-        active=True,
-        handicap_rounded__gte = grades.grade_c_min,
-        handicap_rounded__lte = grades.grade_c_max
-        ).order_by('last_name')
-    }
-
-    d_dict = {
-        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
-        active=True,
-        handicap_rounded__gte = grades.grade_d_min,
-        handicap_rounded__lte = grades.grade_d_max
-        ).order_by('last_name')
-    }
-
-    e_dict = {
-        player.full_name_lastfirst: player.handicap_rounded for player in Player.objects.filter(
-        active=True,
-        handicap_rounded__gte = grades.grade_e_min,
-        handicap_rounded__lte = grades.grade_e_max
-        ).order_by('last_name')
-    }
-
-    a_ordered = collections.OrderedDict(sorted(a_dict.items(), key=lambda t: t[0]))
-    b_ordered = collections.OrderedDict(sorted(b_dict.items(), key=lambda t: t[0]))
-    c_ordered = collections.OrderedDict(sorted(c_dict.items(), key=lambda t: t[0]))
-    d_ordered = collections.OrderedDict(sorted(d_dict.items(), key=lambda t: t[0]))
-    e_ordered = collections.OrderedDict(sorted(e_dict.items(), key=lambda t: t[0]))
-
-    if grades.grade_use == 3:
-        grade_dict['A'] = a_ordered
-        grade_dict['B'] = b_ordered
-        grade_dict['C'] = c_ordered
-    elif grades.grade_use == 4:
-        grade_dict['A'] = a_ordered
-        grade_dict['B'] = b_ordered
-        grade_dict['C'] = c_ordered
-        grade_dict['D'] = d_ordered
-    else:
-        grade_dict['A'] = a_ordered
-        grade_dict['B'] = b_ordered
-        grade_dict['C'] = c_ordered
-        grade_dict['D'] = d_ordered
-        grade_dict['E'] = e_ordered
-
+    grade_dict = get_graded_list()
     context = {
-        'grades': grades,
         'grade_dict': grade_dict,
-        'a_dict': a_dict,
     }
 
     return render(request, 'handicaps/grade.html', context)
