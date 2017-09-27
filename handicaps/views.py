@@ -40,7 +40,6 @@ def game(request):
 
             # Save the data for each player and score in the formset
             new_scores = []
-            update_players = []
 
             for score_form in score_formset:
                 player = score_form.cleaned_data.get('player')
