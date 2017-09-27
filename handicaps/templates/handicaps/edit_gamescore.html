@@ -1,0 +1,10 @@
+{% extends 'handicaps/base.html' %}
+
+{% block content %}
+    <h1 id="id_page_heading">{{ gamescore.player.first_name }} {{ gamescore.player.last_name }} - {{ gamescore.game.game_date | date:"d M Y" }}</h1>
+    <form method="POST" class="gamescore-form">{% csrf_token %}
+        <p>Score: {{ form.score }}</p>
+        <p>Points: {{ form.attendance }}</p>
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

@@ -91,6 +91,34 @@ class PlayersTest(FunctionalTest):
         ))
         self.check_values_in_table(
             'id_expanded_player_table',
-            '30 Jul 2017 Stableford 36 1',
+            '30 Jul 2017 Stableford 36 1 Edit',
+            'tr'
+        )
+
+    def test_can_edit_players_gamescore(self):
+        self.login()
+        self.browser.find_element_by_id('id_expand_28').click()
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('id_page_heading').text,
+            "Tony Abbott"
+        ))
+
+        # Bob finds the gamescore he wants to edit
+        self.browser.find_element_by_id('id_gamescore_4').click()
+
+        # The page loads with the appropriate heading
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('id_page_heading').text,
+            "Tony Abbott - 30 Jul 2017"
+        ))
+
+        # He updates the gamescore to be 4 points
+        self.replace_value_in_form('id_attendance', '4')
+        self.browser.find_element_by_tag_name("button").click()
+
+        # Bob notes that the points in the table has updated accordingly
+        self.check_values_in_table(
+            'id_expanded_player_table',
+            '30 Jul 2017 Stableford 36 4 Edit',
             'tr'
         )

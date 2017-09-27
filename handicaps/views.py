@@ -9,7 +9,7 @@ from django.db import IntegrityError, transaction
 
 from .models import Player, GameType, GameScore, Game, Grade
 from .forms import NewGameTypeForm, NewPlayerForm, NewGameForm, \
-    NewGameScoreForm, EditPlayerForm, GradeForm
+    NewGameScoreForm, EditPlayerForm, GradeForm, EditGameScoreForm
 from .calculator import handicap_calculator
 from .grade import get_graded_list
 
@@ -220,3 +220,22 @@ def expand_player(request, pk):
         'game_history': game_history,
     }
     return render(request, 'handicaps/expand_player.html', context)
+
+@login_required
+def edit_gamescore(request, pk):
+    gamescore = get_object_or_404(GameScore, pk=pk)
+    player = gamescore.player.id
+
+    if request.method == "POST":
+        form = EditGameScoreForm(request.POST, instance=gamescore)
+        if form.is_valid():
+            gamescore = form.save()
+            return redirect('expand_player', player)
+    else:
+        edit_gamescore_form = EditGameScoreForm(instance=gamescore)
+        context = {
+            'gamescore': gamescore,
+            'form': edit_gamescore_form,
+        }
+
+        return render(request, 'handicaps/edit_gamescore.html', context)

@@ -4,12 +4,13 @@
     <h1 id="id_page_heading">{{ player.first_name }} {{ player.last_name }}</h1>
     <a href="{% url 'edit_player' pk=player.pk %}" id="id_player_{{player.pk}}">Edit</a><br>
 
-    <table id="id_expanded_player_table" width="350">
+    <table id="id_expanded_player_table" width="400">
         <tr>
-            <th width="35">Date</th>
-            <th width="35">Type</th>
+            <th width="30">Date</th>
+            <th width="25">Type</th>
             <th width="15">Score</th>
             <th width="15">Pts</th>
+            <th width="15">Ctrls</th>
         </tr>
         {% for game in game_history %}
         <tr>
@@ -17,6 +18,7 @@
             <td align="left">{{ game.game.game_type }}</td>
             <td align="right">{{ game.score }}</td>
             <td align="right">{{ game.attendance }}</td>
+            <td align="left"><a href="{% url 'edit_gamescore' pk=game.pk %}" id="id_gamescore_{{game.pk}}">Edit</td>
         </tr>
         {% endfor %}
     </table>
