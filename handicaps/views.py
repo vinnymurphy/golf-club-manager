@@ -41,26 +41,41 @@ def game(request):
             # Save the data for each player and score in the formset
             new_scores = []
 
-            for score_form in score_formset:
-                player = score_form.cleaned_data.get('player')
-                score = score_form.cleaned_data.get('score')
+            if game.game_type.name == 'Fun match':
+                for score_form in score_formset:
+                    player = score_form.cleaned_data.get('player')
+                    score = score_form.cleaned_data.get('score')
 
-                if player and score:
-                    if score == 0:
-                        break
-                    else:
-                        new_scores.append(GameScore(player=player,
-                            game=game, score=score))
+                    if player and score:
+                        if score == 0:
+                            break
+                        else:
+                            new_scores.append(
+                                GameScore(player=player, game=game))
 
-                        # Get new handicap values
-                        calc_result = handicap_calculator(player, score,
-                            game.game_type)
+                            player.latest_game = game.game_date
+                            player.save()
+            else:
+                for score_form in score_formset:
+                    player = score_form.cleaned_data.get('player')
+                    score = score_form.cleaned_data.get('score')
 
-                        player.handicap = calc_result[0]
-                        player.latest_handicap_change = calc_result[1]
-                        player.latest_game = game.game_date
+                    if player and score:
+                        if score == 0:
+                            break
+                        else:
+                            new_scores.append(
+                                GameScore(player=player, game=game, score=score))
 
-                        player.save()
+                            # Get new handicap values
+                            calc_result = handicap_calculator(player, score,
+                                game.game_type)
+
+                            player.handicap = calc_result[0]
+                            player.latest_handicap_change = calc_result[1]
+                            player.latest_game = game.game_date
+
+                            player.save()
 
             try:
                 with transaction.atomic():

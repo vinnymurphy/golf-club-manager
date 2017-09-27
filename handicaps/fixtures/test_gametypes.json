@@ -32,5 +32,22 @@
             "level_1": 69,
             "level_1_result": -2.0
         }
+    },
+    {
+        "model": "handicaps.GameType",
+        "pk": 3,
+        "fields": {
+            "name": "Fun match",
+            "level_4": 1,
+            "level_4_result": 1,
+            "level_3_min": 2,
+            "level_3_max": 3,
+            "level_3_result": 1,
+            "level_2_min": 4,
+            "level_2_max": 5,
+            "level_2_result": 1,
+            "level_1": 6,
+            "level_1_result": 1
+        }
     }
 ]

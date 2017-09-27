@@ -116,6 +116,55 @@ class GameTest(FunctionalTest):
             "tr"
         )
 
+    def test_can_record_fun_match(self):
+        # Bob has just finished playing a round of golf with the club and has
+        # to get everyone's new handicap
+        self.login()
+
+        # He navigates to the Record a game page
+        self.browser.find_element_by_link_text('Record a game').click()
+
+        # He waits for the page to load and then starts filling in the form
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('id_page_heading').text,
+            "Record a game"
+        ))
+
+        self.replace_value_in_form('id_game_date', '09/27/2017')
+
+        self.choose_dropdown_item('id_game_type', 'Fun match')
+
+        self.replace_value_in_form('id_form-0-score', '41')
+
+        self.browser.find_element_by_tag_name("button").click()
+
+        # He notices the Players page then reloads and he can see that
+        # the players scores have adjusted
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('id_page_heading').text,
+            "Players"
+        ))
+
+        self.check_values_in_table(
+            "id_player_table",
+            "Abbott, Tony 18.0 18 2017-09-27 None Edit / Expand",
+            "tr"
+        )
+
+        # Bob wants to look at the list of games that Tony Abbott played
+        self.browser.find_element_by_id('id_expand_28').click()
+
+        # Tony's game history page loads up
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('id_page_heading').text,
+            "Tony Abbott"
+        ))
+        self.check_values_in_table(
+            'id_expanded_player_table',
+            '27 Sep 2017 Fun match None 1 Edit',
+            'tr'
+        )
+
     def test_can_view_game_history(self):
         # Bob can't remember if he recorded the game played on 30 July 2017,
         # so he loads up the website to check. He clicks the relevant link
