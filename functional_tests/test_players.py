@@ -91,6 +91,6 @@ class PlayersTest(FunctionalTest):
         ))
         self.check_values_in_table(
             'id_expanded_player_table',
-            '30 Jul 2017 Stableford 36',
+            '30 Jul 2017 Stableford 36 1',
             'tr'
         )
