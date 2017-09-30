@@ -1,6 +1,10 @@
 from django import forms
 from .models import GameType, Player, Game, GameScore, Grade
 from django.forms.formsets import BaseFormSet
+from functools import partial
+
+
+DateInput = partial(forms.DateInput, {'type': 'date'})
 
 class NewGameTypeForm(forms.ModelForm):
     class Meta:
@@ -57,3 +61,7 @@ class EditGameScoreForm(forms.ModelForm):
     class Meta:
         model = GameScore
         fields = ('score', 'attendance')
+
+class AttendanceForm(forms.Form):
+    start = forms.DateField(widget=DateInput())
+    end = forms.DateField(widget=DateInput())

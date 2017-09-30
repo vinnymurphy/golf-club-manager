@@ -40,7 +40,8 @@
         "fields": {
             "player": 28,
             "game": 1,
-            "score": 36
+            "score": 36,
+            "attendance": 3
         }
     }
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.forms import formset_factory
@@ -9,7 +10,8 @@ from django.db import IntegrityError, transaction
 
 from .models import Player, GameType, GameScore, Game, Grade
 from .forms import NewGameTypeForm, NewPlayerForm, NewGameForm, \
-    NewGameScoreForm, EditPlayerForm, GradeForm, EditGameScoreForm
+    NewGameScoreForm, EditPlayerForm, GradeForm, EditGameScoreForm, \
+    AttendanceForm
 from .calculator import handicap_calculator
 from .grade import get_graded_list
 
@@ -254,3 +256,29 @@ def edit_gamescore(request, pk):
         }
 
         return render(request, 'handicaps/edit_gamescore.html', context)
+
+@login_required
+def attendance(request):
+    attendance_form = AttendanceForm()
+    context = {'attendance_form': attendance_form}
+    if request.method == "GET":
+        form = AttendanceForm(request.GET)
+        if form.is_valid():
+            start = form.cleaned_data.get('start')
+            end = form.cleaned_data.get('end')
+
+            gamescores = GameScore.objects \
+                .filter(game__game_date__gte=start, game__game_date__lte=end) \
+                .values('player__last_name', 'player__first_name') \
+                .annotate(Sum('attendance')) \
+                .order_by('-attendance__sum')
+
+            context.update({
+                'results': gamescores,
+                'start_txt': start,
+                'end_txt': end
+            })
+
+        return render(request, 'handicaps/attendance.html', context)
+    else:
+        return render(request, 'handicaps/attendance.html', context)
