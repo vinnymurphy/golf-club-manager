@@ -192,6 +192,15 @@ def game_list(request):
     return render(request, 'handicaps/game_list.html', {'games': games})
 
 @login_required
+def expand_game(request, pk):
+    game = get_object_or_404(Game, pk=pk)
+    scores = GameScore.objects.filter(game=pk)
+
+    context = {'game': game, 'scores': scores}
+
+    return render(request, 'handicaps/expand_game.html', context)
+
+@login_required
 def inactive_players(request):
     players = Player.objects.filter(active=False).order_by('last_name')
 

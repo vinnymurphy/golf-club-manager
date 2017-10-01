@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^new_player/', views.new_player, name='new_player'),
     url(r'^edit_player/(?P<pk>[0-9]+)/edit$', views.edit_player, name='edit_player'),
     url(r'^game_list/', views.game_list, name='game_list'),
+    url(r'^expand_game/(?P<pk>[0-9]+)', views.expand_game, name='expand_game'),
     url(r'^edit_game_type/(?P<pk>[0-9]+)/edit$', views.edit_game_type, name='edit_game_type'),
     url(r'^grade/', views.grade, name='grade'),
     url(r'^config_grade/', views.config_grade, name='config_grade'),

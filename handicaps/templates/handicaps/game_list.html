@@ -5,7 +5,7 @@
     <p>See below for a list of all recorded games in descending order.</p>
     <ul>
         {% for game in games %}
-        <li>{{ game }}</li>
+        <li><a href="{% url 'expand_game' pk=game.pk %}" id="id_game_{{game.pk}}">{{ game }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

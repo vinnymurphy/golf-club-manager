@@ -184,6 +184,53 @@ class GameTest(FunctionalTest):
             [data.text for data in list_items]
         )
 
+    def test_can_expand_game(self):
+        # Login and navigate to the game history page
+        self.login()
+        self.browser.find_element_by_link_text('Game History').click()
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            'Games'
+        ))
+
+        # Picks a game
+        self.browser.find_element_by_link_text('2017-07-30 - Stableford').click()
+
+        # The relevant game loads
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            '30 Jul 2017 - Stableford'
+        ))
+
+        # The correct values appear in the table
+        self.check_values_in_table(
+            'id_expand_game_table',
+            'Howard, John 34 1 Edit',
+            'tr'
+        )
+        self.check_values_in_table(
+            'id_expand_game_table',
+            'Fadden, Arthur 37 1 Edit',
+            'tr'
+        )
+        self.check_values_in_table(
+            'id_expand_game_table',
+            'Watson, Chris 39 1 Edit',
+            'tr'
+        )
+        self.check_values_in_table(
+            'id_expand_game_table',
+            'Abbott, Tony 36 3 Edit',
+            'tr'
+        )
+
+        # The link works to edit a GameScore
+        # This has overlap with another functional test
+        self.browser.find_element_by_id('id_gamescore_1').click()
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_id('id_page_heading').text,
+            "John Howard - 30 Jul 2017"
+        ))
 
 class GameTypeTest(FunctionalTest):
 

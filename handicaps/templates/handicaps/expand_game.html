@@ -1,0 +1,25 @@
+{% extends 'handicaps/base.html' %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <h1 id="id_page_heading">{{ game.game_date  | date:"d M Y" }} - {{ game.game_type }}</h1>
+
+    <table id="id_expand_game_table" width="350">
+        <tr>
+            <th width="50">Player</th>
+            <th width="15">Score</th>
+            <th width="15">Pts</th>
+            <th width="20">Ctrls</th>
+        </tr>
+        {% for score in scores %}
+        <tr>
+            <td align="left">{{ score.player }}</td>
+            <td align="right">{{ score.score }}</td>
+            <td align="right">{{ score.attendance }}</td>
+            <td align="left"><a href="{% url 'edit_gamescore' pk=score.pk %}" id="id_gamescore_{{score.pk}}">Edit</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
