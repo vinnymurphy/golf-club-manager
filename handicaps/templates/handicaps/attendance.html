@@ -6,7 +6,7 @@
 
 
 {% block content %}
-    <h1 id='id_page_heading'>Attendance Points</h1>
+    <h1 id='id_page_heading'>{{ heading }}</h1>
 
     <h3>Instructions</h3>
     <ol>
@@ -28,14 +28,22 @@
         <h3 id="id_results_heading">Results: {{ start_txt | date:"d M Y" }} - {{ end_txt | date:"d M Y" }}</h3>
         <table id="id_results_table" width="270">
             <tr>
+                <th width="40">#</th>
                 <th width="200">Name</th>
-                <th width="70">Points</th>
+                <th width="70">{{ th }}</th>
             </tr>
             {% for result in results %}
-            <tr>
-                <td>{{ result.player__last_name }}, {{ result.player__first_name }}</td>
-                <td>{{ result.attendance__sum }}</td>
-            </tr>
+                <tr>
+                    {% if result.player__last_name %}
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ result.player__last_name }}, {{ result.player__first_name }}</td>
+                        <td>{{ result.output }}</td>
+                    {% else %}
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ result.player }}</td>
+                        <td>{{ result.result }}</td>
+                    {% endif %}
+                </tr>
             {% endfor %}
     </div>
 {% endblock %}

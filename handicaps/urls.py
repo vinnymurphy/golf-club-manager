@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^expand_player/(?P<pk>[0-9]+)/', views.expand_player, name='expand_player'),
     url(r'^edit_gamescore/(?P<pk>[0-9]+)/edit$', views.edit_gamescore, name='edit_gamescore'),
     url(r'^attendance/', views.attendance, name='attendance'),
+    url(r'^stableford/', views.stableford, name='stableford'),
     ]

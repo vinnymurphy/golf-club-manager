@@ -8,6 +8,54 @@
         }
     },
     {
+        "model": "handicaps.game",
+        "pk": 2,
+        "fields": {
+            "game_date": "2017-01-14",
+            "game_type": 1
+        }
+    },
+    {
+        "model": "handicaps.game",
+        "pk": 3,
+        "fields": {
+            "game_date": "2017-03-07",
+            "game_type": 1
+        }
+    },
+    {
+        "model": "handicaps.game",
+        "pk": 4,
+        "fields": {
+            "game_date": "2017-05-28",
+            "game_type": 1
+        }
+    },
+    {
+        "model": "handicaps.game",
+        "pk": 5,
+        "fields": {
+            "game_date": "2017-09-17",
+            "game_type": 1
+        }
+    },
+    {
+        "model": "handicaps.game",
+        "pk": 6,
+        "fields": {
+            "game_date": "2017-09-21",
+            "game_type": 1
+        }
+    },
+    {
+        "model": "handicaps.game",
+        "pk": 7,
+        "fields": {
+            "game_date": "2017-10-01",
+            "game_type": 1
+        }
+    },
+    {
         "model": "handicaps.gamescore",
         "pk": 1,
         "fields": {
@@ -42,6 +90,231 @@
             "game": 1,
             "score": 36,
             "attendance": 3
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 5,
+        "fields": {
+            "player": 25,
+            "game": 2,
+            "score": 36
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 6,
+        "fields": {
+            "player": 13,
+            "game": 2,
+            "score": 40
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 7,
+        "fields": {
+            "player": 3,
+            "game": 2,
+            "score": 33
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 8,
+        "fields": {
+            "player": 28,
+            "game": 2,
+            "score": 33
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 9,
+        "fields": {
+            "player": 25,
+            "game": 3,
+            "score": 30
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 10,
+        "fields": {
+            "player": 13,
+            "game": 3,
+            "score": 35
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 11,
+        "fields": {
+            "player": 3,
+            "game": 3,
+            "score": 32
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 12,
+        "fields": {
+            "player": 28,
+            "game": 3,
+            "score": 30
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 13,
+        "fields": {
+            "player": 25,
+            "game": 4,
+            "score": 33
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 14,
+        "fields": {
+            "player": 13,
+            "game": 4,
+            "score": 36
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 15,
+        "fields": {
+            "player": 3,
+            "game": 4,
+            "score": 30
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 16,
+        "fields": {
+            "player": 28,
+            "game": 4,
+            "score": 32
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 17,
+        "fields": {
+            "player": 25,
+            "game": 5,
+            "score": 30
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 18,
+        "fields": {
+            "player": 13,
+            "game": 5,
+            "score": 35
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 19,
+        "fields": {
+            "player": 3,
+            "game": 5,
+            "score": 36
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 20,
+        "fields": {
+            "player": 28,
+            "game": 5,
+            "score": 35
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 21,
+        "fields": {
+            "player": 25,
+            "game": 6,
+            "score": 38
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 22,
+        "fields": {
+            "player": 13,
+            "game": 6,
+            "score": 35
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 23,
+        "fields": {
+            "player": 3,
+            "game": 6,
+            "score": 34
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 24,
+        "fields": {
+            "player": 28,
+            "game": 6,
+            "score": 37
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 25,
+        "fields": {
+            "player": 25,
+            "game": 7,
+            "score": 38
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 26,
+        "fields": {
+            "player": 13,
+            "game": 7,
+            "score": 39
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 27,
+        "fields": {
+            "player": 3,
+            "game": 7,
+            "score": 38
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 28,
+        "fields": {
+            "player": 28,
+            "game": 7,
+            "score": 27
+        }
+    },
+    {
+        "model": "handicaps.gamescore",
+        "pk": 29,
+        "fields": {
+            "player": 17,
+            "game": 7,
+            "score": 45
         }
     }
 ]

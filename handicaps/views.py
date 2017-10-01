@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Sum
+from django.db.models import Sum, Avg
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.forms import formset_factory
@@ -12,7 +12,7 @@ from .models import Player, GameType, GameScore, Game, Grade
 from .forms import NewGameTypeForm, NewPlayerForm, NewGameForm, \
     NewGameScoreForm, EditPlayerForm, GradeForm, EditGameScoreForm, \
     AttendanceForm
-from .calculator import handicap_calculator
+from .calculator import handicap_calculator, stableford_award_calculator
 from .grade import get_graded_list
 
 
@@ -269,7 +269,9 @@ def edit_gamescore(request, pk):
 @login_required
 def attendance(request):
     attendance_form = AttendanceForm()
-    context = {'attendance_form': attendance_form}
+    heading = 'Attendance Points'
+    th = 'Points'
+    context = {'attendance_form': attendance_form, 'heading': heading, 'th': th}
     if request.method == "GET":
         form = AttendanceForm(request.GET)
         if form.is_valid():
@@ -279,11 +281,50 @@ def attendance(request):
             gamescores = GameScore.objects \
                 .filter(game__game_date__gte=start, game__game_date__lte=end) \
                 .values('player__last_name', 'player__first_name') \
-                .annotate(Sum('attendance')) \
-                .order_by('-attendance__sum')
+                .annotate(output=Sum('attendance')) \
+                .order_by('-output')
 
             context.update({
                 'results': gamescores,
+                'start_txt': start,
+                'end_txt': end
+            })
+
+        return render(request, 'handicaps/attendance.html', context)
+    else:
+        return render(request, 'handicaps/attendance.html', context)
+
+@login_required
+def stableford(request):
+    attendance_form = AttendanceForm()
+    heading = 'Stableford Award'
+    th = 'Average Score'
+    context = {'attendance_form': attendance_form, 'heading': heading, 'th': th}
+    if request.method == "GET":
+        form = AttendanceForm(request.GET)
+        if form.is_valid():
+            start = form.cleaned_data.get('start')
+            end = form.cleaned_data.get('end')
+
+            scores_list = []
+            players = Player.objects.filter(active=True)
+
+            for player in players:
+                gamescores = GameScore.objects \
+                    .filter(game__game_date__gte=start, game__game_date__lte=end,
+                    game__game_type=1, player=player)
+
+                if gamescores:
+                    scores = []
+                    for score in gamescores:
+                        scores.append(score.score)
+
+                    scores_list.append({player: scores})
+
+            results = stableford_award_calculator(scores_list)
+
+            context.update({
+                'results': results,
                 'start_txt': start,
                 'end_txt': end
             })
