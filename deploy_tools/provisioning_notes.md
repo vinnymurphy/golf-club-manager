@@ -33,3 +33,35 @@ Assume we have a user account at /home/username
          ├── source
          ├── static
          └── virtualenv
+
+
+## STEPS TO COMPLETE
+1. Ensure latest changes pushed to remote repository (e.g. github)
+
+2. Run the fabfile
+        cd deploy_tools && fab deploy:host=user@site_url
+
+3. ssh into your server and cd to sites/site_url_goes_here/source
+
+4. Create nginx virtual host using the provided templates
+   (HINT: sed s/replaceme/withthis/g)
+        sed "s/SITENAME/site_url_goes_here/g" \
+        deploy_tools/nginx.template.conf \
+        | sudo tee /etc/nginx/sites-available/site_url_goes_here
+
+5. Activate symlink
+        sudo ln -s ../sites-available/site_url_goes_here \
+        /etc/nginx/sites-enabled/site_url_goes_here
+
+6. Write the systemd service
+        sed "s/SITENAME/site_url_goes_here/g" \
+        deploy_tools/gunicorn-systemd.template.service \
+        | sudo tee /etc/systemd/system/gunicorn-site_url_goes_here.service
+
+7. Start up the relevant services
+        sudo systemctl daemon-reload
+        sudo systemctl reload nginx
+        sudo systemctl enable gunicorn-superlists.ottg.eu
+        sudo systemctl start gunicorn-superlists.ottg.eu
+
+8. Visit your URL in the browser
