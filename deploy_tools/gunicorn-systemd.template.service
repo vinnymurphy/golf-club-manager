@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn server for SITENAME
+
+[Service]
+Restart=on-failure
+User=matt
+WorkingDirectory=/home/matt/sites/SITENAME/source
+ExecStart=/home/matt/sites/SITENAME/virtualenv/bin/gunicorn \
+    --bind unix:/tmp/SITENAME.socket \
+    golf_club_manager.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
