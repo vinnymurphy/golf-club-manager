@@ -14,6 +14,7 @@ def deploy():
     _update_virtualenv(source_folder)
     _update_static_files(source_folder)
     _update_database(source_folder)
+    _restart_server(source_folder, env.host)
     print(f'''
         Deployment successful.
         Repo: {REPO_URL}
@@ -99,4 +100,36 @@ def _update_database(source_folder):
     run(
         f'cd {source_folder} && '
         '../virtualenv/bin/python manage.py migrate --noinput'
+    )
+
+
+def _restart_server(source_folder, site_name):
+    if not exists(f'/etc/nginx/sites-available/{site_name}'):
+        # Create nginx virtual host
+        run(
+            f'cd {source_folder} && sed "s/SITENAME/{site_name}/g" '
+            'deploy_tools/nginx.template.conf '
+            f'| sudo tee /etc/nginx/sites-available/{site_name}'
+        )
+
+    if not exists(f'/etc/nginx/sites-enabled/{site_name}'):
+        # Create symlink
+        run(
+            f'sudo ln -s ../sites-available/{site_name} '
+            f'/etc/nginx/sites-enabled/{site_name}'
+        )
+
+    if not exists(f'/etc/systemd/system/gunicorn-{site_name}.service'):
+        # Write systemd service
+        run(
+            f'cd {source_folder} && sed "s/SITENAME/{site_name}/g" '
+            'deploy_tools/gunicorn-systemd.template.service | '
+            f'sudo tee /etc/systemd/system/gunicorn-{site_name}.service '
+            f'&& sudo systemctl enable gunicorn-{site_name} && '
+            f'sudo systemctl start gunicorn-{site_name}'
+        )
+
+    run(
+        'sudo systemctl daemon-reload && '
+        'sudo systemctl reload nginx'
     )
