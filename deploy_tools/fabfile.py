@@ -7,8 +7,9 @@ REPO_URL = 'https://github.com/mstibbard/golf-club-manager.git'
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
+    log_folder = f'/home/{env.user}/logs'
     source_folder = site_folder + '/source'
-    _create_directory_structure_if_necessary(site_folder)
+    _create_directory_structure_if_necessary(site_folder, log_folder)
     _get_latest_source(source_folder)
     _update_settings(source_folder, env.host)
     _update_virtualenv(source_folder)
@@ -47,7 +48,8 @@ def deploy_test():
         )
 
 
-def _create_directory_structure_if_necessary(site_folder):
+def _create_directory_structure_if_necessary(site_folder, log_folder):
+    run(f'mkdir -p {log_folder}')
     for subfolder in (
         'database', 'virtualenv', 'source', 'static'
     ):
