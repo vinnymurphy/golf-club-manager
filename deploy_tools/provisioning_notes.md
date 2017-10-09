@@ -35,6 +35,13 @@ Assume we have a user account at /home/username
          └── virtualenv
 
 
+## PERMISSIONS
+nginx and gunicorn services are configured to run from a limited permission
+user account, www-data. Ensure that relevant directories (e.g. database) are
+updated accordingly.
+Recommended: sudo chmod 755 database
+Recommended: sudo chown -R www-data:www-data database
+
 ## STEPS TO COMPLETE
 1. Ensure latest changes pushed to remote repository (e.g. github)
 
