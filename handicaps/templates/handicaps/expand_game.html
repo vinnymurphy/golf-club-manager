@@ -6,6 +6,8 @@
 {% block content %}
     <h1 id="id_page_heading">{{ game.game_date  | date:"d M Y" }} - {{ game.game_type }}</h1>
 
+    <a href="{% url 'update_game' pk=game.pk %}">Update Game</a>
+
     <table id="id_expand_game_table" width="350">
         <tr>
             <th width="50">Player</th>

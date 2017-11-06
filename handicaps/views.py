@@ -194,7 +194,7 @@ def game_list(request):
 @login_required
 def expand_game(request, pk):
     game = get_object_or_404(Game, pk=pk)
-    scores = GameScore.objects.filter(game=pk)
+    scores = GameScore.objects.filter(game=pk).order_by('player__last_name')
 
     context = {'game': game, 'scores': scores}
 
@@ -332,3 +332,74 @@ def stableford(request):
         return render(request, 'handicaps/attendance.html', context)
     else:
         return render(request, 'handicaps/attendance.html', context)
+
+@login_required
+def update_game(request, pk):
+    game = get_object_or_404(Game, pk=pk)
+    players = Player.objects.filter(active=True).order_by('last_name').exclude(gamescore__game=pk)
+
+    GameScoreFormSet = formset_factory(NewGameScoreForm, extra=0)
+
+    if request.method == "POST":
+        score_formset = GameScoreFormSet(request.POST)
+
+        if score_formset.is_valid():
+            # Save the data for each player and score in the formset
+            new_scores = []
+
+            if game.game_type.name == 'Fun match':
+                for score_form in score_formset:
+                    player = score_form.cleaned_data.get('player')
+                    score = score_form.cleaned_data.get('score')
+
+                    if player and score:
+                        if score == 0:
+                            break
+                        else:
+                            new_scores.append(
+                                GameScore(player=player, game=game))
+
+                            player.latest_game = game.game_date
+                            player.save()
+            else:
+                for score_form in score_formset:
+                    player = score_form.cleaned_data.get('player')
+                    score = score_form.cleaned_data.get('score')
+
+                    if player and score:
+                        if score == 0:
+                            break
+                        else:
+                            new_scores.append(
+                                GameScore(player=player, game=game, score=score))
+
+                            # Get new handicap values
+                            calc_result = handicap_calculator(player, score,
+                                game.game_type)
+
+                            player.handicap = calc_result[0]
+                            player.latest_handicap_change = calc_result[1]
+                            player.latest_game = game.game_date
+
+                            player.save()
+
+            try:
+                with transaction.atomic():
+                    GameScore.objects.bulk_create(new_scores)
+                    messages.success(request, 'New game saved.')
+                    return redirect('expand_game', pk=pk)
+
+            except IntegrityError: # If the transaction failed
+                messages.error(request,
+                    'There was an error saving the game.')
+        else:
+            messages.error(request,
+                'There was an error in the data provided.')
+    else:
+        update_game_form = GameScoreFormSet(initial=[{'player': player, 'score': 0}
+            for player in players
+        ])
+
+        context = {'game': game, 'form': update_game_form}
+
+        return render(request, 'handicaps/update_game.html', context)

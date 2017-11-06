@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^edit_gamescore/(?P<pk>[0-9]+)/edit$', views.edit_gamescore, name='edit_gamescore'),
     url(r'^attendance/', views.attendance, name='attendance'),
     url(r'^stableford/', views.stableford, name='stableford'),
+    url(r'^update_game/(?P<pk>[0-9]+)/', views.update_game, name='update_game'),
     ]

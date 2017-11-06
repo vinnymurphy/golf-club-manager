@@ -1,0 +1,53 @@
+{% extends 'handicaps/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <h1 id="id_page_heading">Update game</h1>
+
+    <div class="game-specifics">
+        <h3>Game details</h3>
+        <p><label>Date of game</label>{{game.game_date}}</p>
+        <p><label>Game type</label>{{game.game_type}}</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <h3>Player scores</h3>
+        <table width="270">
+            <tr>
+                <th width="200">Name</th>
+                <th width="70">Score</th>
+            </tr>
+
+            {{ form.management_form }}
+
+            {% for score_form in form %}
+                <tr>
+                    <td>{{ score_form.player.as_hidden }}{{ score_form.player.initial }}</td>
+                    {% if score_form.player.errors %}
+                        {% for error in score_form.player.errors %}
+                            {{ error|escape }}
+                        {% endfor %}
+                    {% endif %}
+
+                    <td>{{ score_form.score }}</td>
+                    {% if score_form.score.errors %}
+                        {% for error in score_form.score.errors %}
+                            {{ error|escape }}
+                        {% endfor %}
+                    {% endif %}
+
+                </tr>
+            {% endfor %}
+        </table>
+        </br>
+        <button type="submit" value="Save game" class="button">
+            Save game</button> or
+        <a href="{% url 'player_list' %}">Cancel</a>
+    </form>
+{% endblock %}
