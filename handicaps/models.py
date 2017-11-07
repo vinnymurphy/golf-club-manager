@@ -45,6 +45,8 @@ class GameScore(models.Model):
     player = models.ForeignKey('Player')
     game = models.ForeignKey('Game')
     score = models.IntegerField(null=True)
+    handicap = models.DecimalField(max_digits=3,decimal_places=1)
+    handicap_change = models.DecimalField(max_digits=2, decimal_places=1, default=0.0)
     attendance = models.IntegerField(default=1)
 
     def __str__(self):

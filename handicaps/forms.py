@@ -43,12 +43,13 @@ class NewGameScoreForm(forms.ModelForm):
 
     class Meta:
         model = GameScore
-        fields = ('player', 'score')
+        fields = ('player', 'score', 'attendance')
 
     def __init__(self, *args, **kwargs):
         super(NewGameScoreForm, self).__init__(*args, **kwargs)
         self.fields['score'].widget.attrs['style'] = 'width: 60'
         self.fields['player'].widget.attrs['style'] = 'width: 180'
+        self.fields['attendance'].widget.attrs['style'] = 'width: 80'
 
 class GradeForm(forms.ModelForm):
     class Meta:

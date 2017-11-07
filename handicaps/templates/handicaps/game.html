@@ -30,10 +30,11 @@
         </div>
 
         <h3>Player scores</h3>
-        <table width="270">
+        <table width="370">
             <tr>
                 <th width="200">Name</th>
                 <th width="70">Score</th>
+                <th width="100">Attendance</th>
             </tr>
 
             {{ score_formset.management_form}}
@@ -53,6 +54,7 @@
                             {{ error|escape }}
                         {% endfor %}
                     {% endif %}
+                    <td>{{ score_form.attendance}}</td>
 
                 </tr>
             {% endfor %}

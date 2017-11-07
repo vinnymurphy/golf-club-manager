@@ -8,10 +8,12 @@
 
     <a href="{% url 'update_game' pk=game.pk %}">Update Game</a>
 
-    <table id="id_expand_game_table" width="350">
+    <table id="id_expand_game_table">
         <tr>
             <th width="50">Player</th>
             <th width="15">Score</th>
+            <th width="45">Handicap</th>
+            <th width="30">Change</th>
             <th width="15">Pts</th>
             <th width="20">Ctrls</th>
         </tr>
@@ -19,6 +21,8 @@
         <tr>
             <td align="left">{{ score.player }}</td>
             <td align="right">{{ score.score }}</td>
+            <td align="right">{{ score.handicap }}</td>
+            <td align="right">{{ score.handicap_change }}</td>
             <td align="right">{{ score.attendance }}</td>
             <td align="left"><a href="{% url 'edit_gamescore' pk=score.pk %}" id="id_gamescore_{{score.pk}}">Edit</td>
         </tr>

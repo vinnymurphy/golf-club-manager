@@ -47,13 +47,14 @@ def game(request):
                 for score_form in score_formset:
                     player = score_form.cleaned_data.get('player')
                     score = score_form.cleaned_data.get('score')
+                    attendance = score_form.cleaned_data.get('attendance')
 
                     if player and score:
                         if score == 0:
                             break
                         else:
                             new_scores.append(
-                                GameScore(player=player, game=game))
+                                GameScore(player=player, game=game, attendance=attendance))
 
                             player.latest_game = game.game_date
                             player.save()
@@ -61,17 +62,24 @@ def game(request):
                 for score_form in score_formset:
                     player = score_form.cleaned_data.get('player')
                     score = score_form.cleaned_data.get('score')
+                    attendance = score_form.cleaned_data.get('attendance')
 
                     if player and score:
                         if score == 0:
                             break
                         else:
-                            new_scores.append(
-                                GameScore(player=player, game=game, score=score))
-
                             # Get new handicap values
                             calc_result = handicap_calculator(player, score,
                                 game.game_type)
+
+                            new_scores.append(GameScore(
+                                player=player, 
+                                game=game, 
+                                score=score, 
+                                handicap=player.handicap,
+                                handicap_change=calc_result[1],
+                                attendance=attendance
+                            ))
 
                             player.handicap = calc_result[0]
                             player.latest_handicap_change = calc_result[1]
@@ -351,13 +359,14 @@ def update_game(request, pk):
                 for score_form in score_formset:
                     player = score_form.cleaned_data.get('player')
                     score = score_form.cleaned_data.get('score')
+                    attendance = score_form.cleaned_data.get('attendance')
 
                     if player and score:
                         if score == 0:
                             break
                         else:
                             new_scores.append(
-                                GameScore(player=player, game=game))
+                                GameScore(player=player, game=game, attendance=attendance))
 
                             player.latest_game = game.game_date
                             player.save()
@@ -365,17 +374,24 @@ def update_game(request, pk):
                 for score_form in score_formset:
                     player = score_form.cleaned_data.get('player')
                     score = score_form.cleaned_data.get('score')
+                    attendance = score_form.cleaned_data.get('attendance')
 
                     if player and score:
                         if score == 0:
                             break
                         else:
-                            new_scores.append(
-                                GameScore(player=player, game=game, score=score))
-
                             # Get new handicap values
                             calc_result = handicap_calculator(player, score,
                                 game.game_type)
+
+                            new_scores.append(GameScore(
+                                player=player, 
+                                game=game, 
+                                score=score, 
+                                handicap=player.handicap,
+                                handicap_change=calc_result[1],
+                                attendance=attendance
+                            ))
 
                             player.handicap = calc_result[0]
                             player.latest_handicap_change = calc_result[1]
