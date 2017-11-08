@@ -61,7 +61,9 @@
         "fields": {
             "player": 25,
             "game": 1,
-            "score": 34
+            "score": 34,
+            "handicap": 0.7,
+            "handicap_change": 0.3
         }
     },
     {
@@ -70,7 +72,9 @@
         "fields": {
             "player": 13,
             "game": 1,
-            "score": 37
+            "score": 37,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -79,7 +83,9 @@
         "fields": {
             "player": 3,
             "game": 1,
-            "score": 39
+            "score": 39,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -89,7 +95,9 @@
             "player": 28,
             "game": 1,
             "score": 36,
-            "attendance": 3
+            "attendance": 3,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -98,7 +106,9 @@
         "fields": {
             "player": 25,
             "game": 2,
-            "score": 36
+            "score": 36,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -107,7 +117,9 @@
         "fields": {
             "player": 13,
             "game": 2,
-            "score": 40
+            "score": 40,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -116,7 +128,9 @@
         "fields": {
             "player": 3,
             "game": 2,
-            "score": 33
+            "score": 33,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -125,7 +139,9 @@
         "fields": {
             "player": 28,
             "game": 2,
-            "score": 33
+            "score": 33,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -134,7 +150,9 @@
         "fields": {
             "player": 25,
             "game": 3,
-            "score": 30
+            "score": 30,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -143,7 +161,9 @@
         "fields": {
             "player": 13,
             "game": 3,
-            "score": 35
+            "score": 35,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -152,7 +172,9 @@
         "fields": {
             "player": 3,
             "game": 3,
-            "score": 32
+            "score": 32,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -161,7 +183,9 @@
         "fields": {
             "player": 28,
             "game": 3,
-            "score": 30
+            "score": 30,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -170,7 +194,9 @@
         "fields": {
             "player": 25,
             "game": 4,
-            "score": 33
+            "score": 33,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -179,7 +205,9 @@
         "fields": {
             "player": 13,
             "game": 4,
-            "score": 36
+            "score": 36,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -188,7 +216,9 @@
         "fields": {
             "player": 3,
             "game": 4,
-            "score": 30
+            "score": 30,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -197,7 +227,9 @@
         "fields": {
             "player": 28,
             "game": 4,
-            "score": 32
+            "score": 32,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -206,7 +238,9 @@
         "fields": {
             "player": 25,
             "game": 5,
-            "score": 30
+            "score": 30,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -215,7 +249,9 @@
         "fields": {
             "player": 13,
             "game": 5,
-            "score": 35
+            "score": 35,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -224,7 +260,9 @@
         "fields": {
             "player": 3,
             "game": 5,
-            "score": 36
+            "score": 36,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -233,7 +271,9 @@
         "fields": {
             "player": 28,
             "game": 5,
-            "score": 35
+            "score": 35,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -242,7 +282,9 @@
         "fields": {
             "player": 25,
             "game": 6,
-            "score": 38
+            "score": 38,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -251,7 +293,9 @@
         "fields": {
             "player": 13,
             "game": 6,
-            "score": 35
+            "score": 35,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -260,7 +304,9 @@
         "fields": {
             "player": 3,
             "game": 6,
-            "score": 34
+            "score": 34,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -269,7 +315,9 @@
         "fields": {
             "player": 28,
             "game": 6,
-            "score": 37
+            "score": 37,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -278,7 +326,9 @@
         "fields": {
             "player": 25,
             "game": 7,
-            "score": 38
+            "score": 38,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -287,7 +337,9 @@
         "fields": {
             "player": 13,
             "game": 7,
-            "score": 39
+            "score": 39,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -296,7 +348,9 @@
         "fields": {
             "player": 3,
             "game": 7,
-            "score": 38
+            "score": 38,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -305,7 +359,9 @@
         "fields": {
             "player": 28,
             "game": 7,
-            "score": 27
+            "score": 27,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     },
     {
@@ -314,7 +370,9 @@
         "fields": {
             "player": 17,
             "game": 7,
-            "score": 45
+            "score": 45,
+            "handicap": 24.5,
+            "handicap_change": -0.5
         }
     }
 ]

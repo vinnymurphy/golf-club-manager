@@ -205,22 +205,22 @@ class GameTest(FunctionalTest):
         # The correct values appear in the table
         self.check_values_in_table(
             'id_expand_game_table',
-            'Howard, John 34 1 Edit',
+            'Howard, John 34 0.7 0.3 1 Edit',
             'tr'
         )
         self.check_values_in_table(
             'id_expand_game_table',
-            'Fadden, Arthur 37 1 Edit',
+            'Fadden, Arthur 37 24.5 -0.5 1 Edit',
             'tr'
         )
         self.check_values_in_table(
             'id_expand_game_table',
-            'Watson, Chris 39 1 Edit',
+            'Watson, Chris 39 24.5 -0.5 1 Edit',
             'tr'
         )
         self.check_values_in_table(
             'id_expand_game_table',
-            'Abbott, Tony 36 3 Edit',
+            'Abbott, Tony 36 24.5 -0.5 3 Edit',
             'tr'
         )
 

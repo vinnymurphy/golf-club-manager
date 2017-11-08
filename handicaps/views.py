@@ -53,8 +53,14 @@ def game(request):
                         if score == 0:
                             break
                         else:
-                            new_scores.append(
-                                GameScore(player=player, game=game, attendance=attendance))
+                            new_scores.append(GameScore(
+                                player=player, 
+                                game=game,
+                                score=None,
+                                handicap=player.handicap,
+                                handicap_change=0.0, 
+                                attendance=attendance
+                            ))
 
                             player.latest_game = game.game_date
                             player.save()
@@ -361,12 +367,18 @@ def update_game(request, pk):
                     score = score_form.cleaned_data.get('score')
                     attendance = score_form.cleaned_data.get('attendance')
 
-                    if player and score:
+                    if player and score and attendance:
                         if score == 0:
                             break
                         else:
-                            new_scores.append(
-                                GameScore(player=player, game=game, attendance=attendance))
+                            new_scores.append(GameScore(
+                                player=player, 
+                                game=game,
+                                score=None,
+                                handicap=player.handicap,
+                                handicap_change=0.0, 
+                                attendance=attendance
+                            ))
 
                             player.latest_game = game.game_date
                             player.save()
