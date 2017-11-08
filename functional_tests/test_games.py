@@ -184,7 +184,7 @@ class GameTest(FunctionalTest):
             [data.text for data in list_items]
         )
 
-    def test_can_expand_game(self):
+    def test_can_update_game(self):
         # Login and navigate to the game history page
         self.login()
         self.browser.find_element_by_link_text('Game History').click()
@@ -224,13 +224,28 @@ class GameTest(FunctionalTest):
             'tr'
         )
 
-        # The link works to edit a GameScore
-        # This has overlap with another functional test
-        self.browser.find_element_by_id('id_gamescore_1').click()
+        self.browser.find_element_by_link_text('Update Game').click()
         self.wait_for(lambda: self.assertEqual(
             self.browser.find_element_by_id('id_page_heading').text,
-            "John Howard - 30 Jul 2017"
+            "Update game"
         ))
+
+        self.replace_value_in_form('id_form-4-score', '42')
+        self.replace_value_in_form('id_form-4-attendance', '4')
+        self.browser.find_element_by_tag_name("button").click()
+
+        # User is redirected back to the expanded game page
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            '30 Jul 2017 - Stableford'
+        ))
+
+        # The new values appear in the table
+        self.check_values_in_table(
+            'id_expand_game_table',
+            'Curtin, John 42 41.0 -2.0 4 Edit',
+            'tr'
+        )
 
 class GameTypeTest(FunctionalTest):
 
