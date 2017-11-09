@@ -431,3 +431,18 @@ def update_game(request, pk):
         context = {'game': game, 'form': update_game_form}
 
         return render(request, 'handicaps/update_game.html', context)
+
+@login_required
+def delete_game(request, pk):
+    game = get_object_or_404(Game, pk=pk)
+    gamescores = GameScore.objects.filter(game=pk)
+    
+    for gamescore in gamescores:
+        player = Player.objects.get(pk=gamescore.player.id)
+        player.handicap -= -gamescore.handicap_change
+        player.latest_handicap_change = -gamescore.handicap_change
+        player.save()
+        gamescore.delete()
+    
+    game.delete()
+    return redirect('player_list')

@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^attendance/', views.attendance, name='attendance'),
     url(r'^stableford/', views.stableford, name='stableford'),
     url(r'^update_game/(?P<pk>[0-9]+)/', views.update_game, name='update_game'),
+    url(r'^delete_game/(?P<pk>[0-9]+)/', views.delete_game, name='delete_game'),
     ]

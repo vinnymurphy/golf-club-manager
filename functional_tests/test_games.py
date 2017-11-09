@@ -224,6 +224,8 @@ class GameTest(FunctionalTest):
             'tr'
         )
 
+        # User realises they forgot to record someones score and decides
+        # to update the game
         self.browser.find_element_by_link_text('Update Game').click()
         self.wait_for(lambda: self.assertEqual(
             self.browser.find_element_by_id('id_page_heading').text,
@@ -246,6 +248,58 @@ class GameTest(FunctionalTest):
             'Curtin, John 42 41.0 -2.0 4 Edit',
             'tr'
         )
+    
+    def test_can_delete_game(self):
+        # User realises they accidentally recorded the latest match as Stableford
+        # instead of Stroke. They go to game history to try and delete it/roll it
+        # back
+        self.login()
+        self.browser.find_element_by_link_text('Game History').click()
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            'Games'
+        ))
+
+        # Picks the incorrectly recorded game
+        self.browser.find_element_by_link_text('2017-10-01 - Stableford').click()
+
+        # The relevant game loads
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            '01 Oct 2017 - Stableford'
+        ))
+
+        # User selects delete option and a warning pops up to confirm they want
+        # to delete the game
+        self.browser.find_element_by_link_text('Delete Game').click()
+        self.browser.switch_to_alert().accept()
+
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            'Players'
+        ))
+
+        # The handicap change has been reversed on the player list
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            'Players'
+        ))
+        self.check_values_in_table(
+            'id_player_table',
+            'Abbott, Tony 17.5 18 None 0.5 Edit / Expand',
+            'tr'
+        )
+
+        # User then confirms the game no longer appears on the game history page
+        self.browser.find_element_by_link_text('Game History').click()
+        self.wait_for(lambda: self.assertIn(
+            self.browser.find_element_by_id('id_page_heading').text,
+            'Games'
+        ))
+
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertNotIn('01 Oct 2017 - Stableford', page_text)
+
 
 class GameTypeTest(FunctionalTest):
 
