@@ -62,21 +62,21 @@ class TestAwards(FunctionalTest):
 
         self.check_values_in_table(
             'id_results_table',
-            '1 Fadden, Arthur 37.0',
+            '1 Fadden, Arthur 222',
             'tr'
         )
         self.check_values_in_table(
             'id_results_table',
-            '2 Watson, Chris 35.33',
+            '2 Watson, Chris 212',
             'tr'
         )
         self.check_values_in_table(
             'id_results_table',
-            '3 Howard, John 34.83',
+            '3 Howard, John 209',
             'tr'
         )
         self.check_values_in_table(
             'id_results_table',
-            '4 Abbott, Tony 33.83',
+            '4 Abbott, Tony 203',
             'tr'
         )

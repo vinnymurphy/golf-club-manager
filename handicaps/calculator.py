@@ -51,10 +51,7 @@ def stableford_award_calculator(scores_list):
                 for score in top_six_scores:
                     total += score
 
-                average_score = total / len(top_six_scores)
-                result = round(average_score, 2)
-
-                results_list.append({'player': name, 'result': result})
+                results_list.append({'player': name, 'result': total})
 
     results_list_descending = sorted(
         results_list, key=lambda x:x['result'], reverse=True
