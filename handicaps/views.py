@@ -312,7 +312,7 @@ def attendance(request):
 def stableford(request):
     attendance_form = AttendanceForm()
     heading = 'Stableford Award'
-    th = 'Average Score'
+    th = 'Aggregate Score'
     context = {'attendance_form': attendance_form, 'heading': heading, 'th': th}
     if request.method == "GET":
         form = AttendanceForm(request.GET)

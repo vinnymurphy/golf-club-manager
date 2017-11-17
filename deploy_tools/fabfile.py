@@ -132,7 +132,8 @@ def _restart_server(source_folder, site_name):
         )
 
     run(
-        f'sudo systemctl restart gunicorn-{site_name} && '
         'sudo systemctl daemon-reload && '
-        'sudo systemctl reload nginx'
+        'sudo systemctl reload nginx && '
+        f'sudo service gunicorn-{site_name} restart && '
+        f'sudo systemctl restart gunicorn-{site_name}'
     )
