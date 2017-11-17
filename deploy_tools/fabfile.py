@@ -49,21 +49,21 @@ def deploy_test():
 
 
 def _create_directory_structure_if_necessary(site_folder, log_folder):
-    run(f'sudo mkdir -p {log_folder}')
+    run(f'mkdir -p {log_folder}')
     for subfolder in (
         'database', 'virtualenv', 'source', 'static'
     ):
-        run(f'sudo mkdir -p {site_folder}/{subfolder}')
+        run(f'mkdir -p {site_folder}/{subfolder}')
 
 
 def _get_latest_source(source_folder):
     if exists(source_folder + '/.git'):
-        run(f'cd {source_folder} && sudo git fetch')
+        run(f'cd {source_folder} && git fetch')
     else:
-        run(f'sudo git clone {REPO_URL} {source_folder}')
+        run(f'git clone {REPO_URL} {source_folder}')
     current_commit = local(
         "git log -n 1 --format=%H", capture=True)
-    run(f'cd {source_folder} && sudo git reset --hard {current_commit}')
+    run(f'cd {source_folder} && git reset --hard {current_commit}')
 
 
 def _update_settings(source_folder, site_name):
@@ -86,54 +86,20 @@ def _update_virtualenv(source_folder):
     if not exists(virtualenv_folder + '/bin/pip'):
         run(f'python3.6 -m venv {virtualenv_folder}')
     run(
-        f'sudo {virtualenv_folder}/bin/pip install -r '
+        f'{virtualenv_folder}/bin/pip install -r '
         f'{source_folder}/requirements.txt'
     )
 
 
 def _update_static_files(source_folder):
     run(
-        f'cd {source_folder} && sudo '
+        f'cd {source_folder} && '
         '../virtualenv/bin/python manage.py collectstatic --noinput'
     )
 
 
 def _update_database(source_folder):
     run(
-        f'cd {source_folder} && sudo '
+        f'cd {source_folder} && '
         '../virtualenv/bin/python manage.py migrate --noinput'
-    )
-
-
-def _restart_server(source_folder, site_name):
-    if not exists(f'/etc/nginx/sites-available/{site_name}'):
-        # Create nginx virtual host
-        run(
-            f'cd {source_folder} && sed "s/SITENAME/{site_name}/g" '
-            'deploy_tools/nginx.template.conf '
-            f'| sudo tee /etc/nginx/sites-available/{site_name}'
-        )
-
-    if not exists(f'/etc/nginx/sites-enabled/{site_name}'):
-        # Create symlink
-        run(
-            f'sudo ln -s ../sites-available/{site_name} '
-            f'/etc/nginx/sites-enabled/{site_name}'
-        )
-
-    if not exists(f'/etc/systemd/system/gunicorn-{site_name}.service'):
-        # Write systemd service
-        run(
-            f'cd {source_folder} && sed "s/SITENAME/{site_name}/g" '
-            'deploy_tools/gunicorn-systemd.template.service | '
-            f'sudo tee /etc/systemd/system/gunicorn-{site_name}.service '
-            f'&& sudo systemctl enable gunicorn-{site_name} && '
-            f'sudo systemctl start gunicorn-{site_name}'
-        )
-
-    run(
-        'sudo systemctl daemon-reload && '
-        'sudo systemctl reload nginx && '
-        f'sudo service gunicorn-{site_name} restart && '
-        f'sudo systemctl restart gunicorn-{site_name}'
     )
