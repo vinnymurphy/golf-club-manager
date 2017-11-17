@@ -15,9 +15,8 @@ def deploy():
     _update_virtualenv(source_folder)
     _update_static_files(source_folder)
     _update_database(source_folder)
-    _restart_server(source_folder, env.host)
     print(f'''
-        Deployment successful.
+        Fabfile complete.
         Repo: {REPO_URL}
         Environment: {site_folder}
     ''')
