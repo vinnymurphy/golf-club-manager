@@ -49,21 +49,21 @@ def deploy_test():
 
 
 def _create_directory_structure_if_necessary(site_folder, log_folder):
-    run(f'mkdir -p {log_folder}')
+    run(f'sudo mkdir -p {log_folder}')
     for subfolder in (
         'database', 'virtualenv', 'source', 'static'
     ):
-        run(f'mkdir -p {site_folder}/{subfolder}')
+        run(f'sudo mkdir -p {site_folder}/{subfolder}')
 
 
 def _get_latest_source(source_folder):
     if exists(source_folder + '/.git'):
-        run(f'cd {source_folder} && git fetch')
+        run(f'cd {source_folder} && sudo git fetch')
     else:
-        run(f'git clone {REPO_URL} {source_folder}')
+        run(f'sudo git clone {REPO_URL} {source_folder}')
     current_commit = local(
         "git log -n 1 --format=%H", capture=True)
-    run(f'cd {source_folder} && git reset --hard {current_commit}')
+    run(f'cd {source_folder} && sudo git reset --hard {current_commit}')
 
 
 def _update_settings(source_folder, site_name):
@@ -86,21 +86,21 @@ def _update_virtualenv(source_folder):
     if not exists(virtualenv_folder + '/bin/pip'):
         run(f'python3.6 -m venv {virtualenv_folder}')
     run(
-        f'{virtualenv_folder}/bin/pip install -r '
+        f'sudo {virtualenv_folder}/bin/pip install -r '
         f'{source_folder}/requirements.txt'
     )
 
 
 def _update_static_files(source_folder):
     run(
-        f'cd {source_folder} && '
+        f'cd {source_folder} && sudo '
         '../virtualenv/bin/python manage.py collectstatic --noinput'
     )
 
 
 def _update_database(source_folder):
     run(
-        f'cd {source_folder} && '
+        f'cd {source_folder} && sudo '
         '../virtualenv/bin/python manage.py migrate --noinput'
     )
 
@@ -132,6 +132,7 @@ def _restart_server(source_folder, site_name):
         )
 
     run(
+        f'sudo systemctl restart gunicorn-{site_name} && '
         'sudo systemctl daemon-reload && '
         'sudo systemctl reload nginx'
     )
