@@ -62,19 +62,19 @@ def get_graded_list():
     e_ordered = collections.OrderedDict(sorted(e_dict.items(), key=lambda t: t[0]))
 
     if grades.grade_use == 3:
-        grade_dict['A'] = a_ordered
-        grade_dict['B'] = b_ordered
-        grade_dict['C'] = c_ordered
+        grade_dict['1'] = a_ordered
+        grade_dict['2'] = b_ordered
+        grade_dict['3'] = c_ordered
     elif grades.grade_use == 4:
-        grade_dict['A'] = a_ordered
-        grade_dict['B'] = b_ordered
-        grade_dict['C'] = c_ordered
-        grade_dict['D'] = d_ordered
+        grade_dict['1'] = a_ordered
+        grade_dict['2'] = b_ordered
+        grade_dict['3'] = c_ordered
+        grade_dict['4'] = d_ordered
     else:
-        grade_dict['A'] = a_ordered
-        grade_dict['B'] = b_ordered
-        grade_dict['C'] = c_ordered
-        grade_dict['D'] = d_ordered
-        grade_dict['E'] = e_ordered
+        grade_dict['1'] = a_ordered
+        grade_dict['2'] = b_ordered
+        grade_dict['3'] = c_ordered
+        grade_dict['4'] = d_ordered
+        grade_dict['5'] = e_ordered
 
     return grade_dict
