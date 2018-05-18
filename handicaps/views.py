@@ -439,7 +439,7 @@ def delete_game(request, pk):
     
     for gamescore in gamescores:
         player = Player.objects.get(pk=gamescore.player.id)
-        player.handicap -= -gamescore.handicap_change
+        player.handicap -= gamescore.handicap_change
         player.latest_handicap_change = -gamescore.handicap_change
         player.save()
         gamescore.delete()
