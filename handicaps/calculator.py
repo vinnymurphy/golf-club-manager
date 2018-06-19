@@ -17,9 +17,9 @@ def handicap_calculator(player, score, gametype):
         handicap_change = gametype.level_1_result
 
     # Checks if the handicap should be increased or decreased to ensure
-    # that the updated handicap never exceeds 44.5
-    if (handicap_change + handicap) >= Decimal(44.5):
-        new_handicap = Decimal(44.5)
+    # that the updated handicap never exceeds 44.6
+    if (handicap_change + handicap) >= Decimal(44.6):
+        new_handicap = Decimal(44.6)
         handicap_change = new_handicap - handicap
     else:
         new_handicap = handicap + handicap_change
