@@ -1,12 +1,15 @@
-from django.conf.urls import include, url
+from django.urls import path, re_path
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from handicaps import urls as handicaps_urls
+
+"""
+https://stackoverflow.com/questions/47065438/attributeerror-module-django-contrib-auth-views-has-no-attribute
+"""
 
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'', include(handicaps_urls)),
-    url(r'^accounts/login/$', auth_views.login, name='login'),
-    url(r'^accounts/logout/$', auth_views.logout, name='logout'),
+    path(r'^admin/', admin.site.urls),
+
+    re_path(r'^accounts/login/$', auth_views.login, name='login'),
+    re_path(r'^accounts/logout/$', auth_views.logout, name='logout'),
 ]
