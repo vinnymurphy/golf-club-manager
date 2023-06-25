@@ -35,7 +35,7 @@ class Player(models.Model):
 
 class Game(models.Model):
     game_date = models.DateField()
-    game_type = models.ForeignKey('GameType')
+    game_type = models.ForeignKey('GameType', on_delete=models.CASCADE)
 
     def __str__(self):
         return "%s - %s" % (self.game_date, self.game_type)
