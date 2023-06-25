@@ -41,8 +41,8 @@ class Game(models.Model):
 
 
 class GameScore(models.Model):
-    player = models.ForeignKey("Player")
-    game = models.ForeignKey("Game")
+    player = models.ForeignKey("Player", on_delete=models.CASCADE)
+    game = models.ForeignKey("Game", on_delete=models.CASCADE)
     score = models.IntegerField(null=True)
     handicap = models.DecimalField(max_digits=3, decimal_places=1)
     handicap_change = models.DecimalField(
