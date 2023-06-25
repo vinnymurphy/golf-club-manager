@@ -1,3 +1,8 @@
-Django==1.11.3
-gunicorn==19.7.1
-selenium>=3.4.3
+Django
+gunicorn
+selenium
+black
+sourcery-cli
+ruff
+pylint
+isort
