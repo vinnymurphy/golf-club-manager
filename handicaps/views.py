@@ -52,18 +52,17 @@ def game(request):
                     if player and score:
                         if score == 0:
                             break
-                        else:
-                            new_scores.append(GameScore(
-                                player=player, 
-                                game=game,
-                                score=None,
-                                handicap=player.handicap,
-                                handicap_change=0.0, 
-                                attendance=attendance
-                            ))
+                        new_scores.append(GameScore(
+                            player=player, 
+                            game=game,
+                            score=None,
+                            handicap=player.handicap,
+                            handicap_change=0.0, 
+                            attendance=attendance
+                        ))
 
-                            player.latest_game = game.game_date
-                            player.save()
+                        player.latest_game = game.game_date
+                        player.save()
             else:
                 for score_form in score_formset:
                     player = score_form.cleaned_data.get('player')
@@ -73,25 +72,24 @@ def game(request):
                     if player and score:
                         if score == 0:
                             break
-                        else:
-                            # Get new handicap values
-                            calc_result = handicap_calculator(player, score,
-                                game.game_type)
+                        # Get new handicap values
+                        calc_result = handicap_calculator(player, score,
+                            game.game_type)
 
-                            new_scores.append(GameScore(
-                                player=player, 
-                                game=game, 
-                                score=score, 
-                                handicap=player.handicap,
-                                handicap_change=calc_result[1],
-                                attendance=attendance
-                            ))
+                        new_scores.append(GameScore(
+                            player=player, 
+                            game=game, 
+                            score=score, 
+                            handicap=player.handicap,
+                            handicap_change=calc_result[1],
+                            attendance=attendance
+                        ))
 
-                            player.handicap = calc_result[0]
-                            player.latest_handicap_change = calc_result[1]
-                            player.latest_game = game.game_date
+                        player.handicap = calc_result[0]
+                        player.latest_handicap_change = calc_result[1]
+                        player.latest_game = game.game_date
 
-                            player.save()
+                        player.save()
 
             try:
                 with transaction.atomic():
@@ -264,10 +262,10 @@ def expand_player(request, pk):
 @login_required
 def edit_gamescore(request, pk):
     gamescore = get_object_or_404(GameScore, pk=pk)
-    player = gamescore.player.id
-
     if request.method == "POST":
         form = EditGameScoreForm(request.POST, instance=gamescore)
+        player = gamescore.player.id
+
         if form.is_valid():
             gamescore = form.save()
             return redirect('expand_player', player)
@@ -298,15 +296,13 @@ def attendance(request):
                 .annotate(output=Sum('attendance')) \
                 .order_by('-output')
 
-            context.update({
+            context |= {
                 'results': gamescores,
                 'start_txt': start,
-                'end_txt': end
-            })
+                'end_txt': end,
+            }
 
-        return render(request, 'handicaps/attendance.html', context)
-    else:
-        return render(request, 'handicaps/attendance.html', context)
+    return render(request, 'handicaps/attendance.html', context)
 
 @login_required
 def stableford(request):
@@ -329,23 +325,14 @@ def stableford(request):
                     game__game_type=1, player=player)
 
                 if gamescores:
-                    scores = []
-                    for score in gamescores:
-                        scores.append(score.score)
-
+                    scores = [score.score for score in gamescores]
                     scores_list.append({player: scores})
 
             results = stableford_award_calculator(scores_list)
 
-            context.update({
-                'results': results,
-                'start_txt': start,
-                'end_txt': end
-            })
+            context |= {'results': results, 'start_txt': start, 'end_txt': end}
 
-        return render(request, 'handicaps/attendance.html', context)
-    else:
-        return render(request, 'handicaps/attendance.html', context)
+    return render(request, 'handicaps/attendance.html', context)
 
 @login_required
 def update_game(request, pk):
@@ -370,18 +357,17 @@ def update_game(request, pk):
                     if player and score and attendance:
                         if score == 0:
                             break
-                        else:
-                            new_scores.append(GameScore(
-                                player=player, 
-                                game=game,
-                                score=None,
-                                handicap=player.handicap,
-                                handicap_change=0.0, 
-                                attendance=attendance
-                            ))
+                        new_scores.append(GameScore(
+                            player=player, 
+                            game=game,
+                            score=None,
+                            handicap=player.handicap,
+                            handicap_change=0.0, 
+                            attendance=attendance
+                        ))
 
-                            player.latest_game = game.game_date
-                            player.save()
+                        player.latest_game = game.game_date
+                        player.save()
             else:
                 for score_form in score_formset:
                     player = score_form.cleaned_data.get('player')
@@ -391,25 +377,24 @@ def update_game(request, pk):
                     if player and score:
                         if score == 0:
                             break
-                        else:
-                            # Get new handicap values
-                            calc_result = handicap_calculator(player, score,
-                                game.game_type)
+                        # Get new handicap values
+                        calc_result = handicap_calculator(player, score,
+                            game.game_type)
 
-                            new_scores.append(GameScore(
-                                player=player, 
-                                game=game, 
-                                score=score, 
-                                handicap=player.handicap,
-                                handicap_change=calc_result[1],
-                                attendance=attendance
-                            ))
+                        new_scores.append(GameScore(
+                            player=player, 
+                            game=game, 
+                            score=score, 
+                            handicap=player.handicap,
+                            handicap_change=calc_result[1],
+                            attendance=attendance
+                        ))
 
-                            player.handicap = calc_result[0]
-                            player.latest_handicap_change = calc_result[1]
-                            player.latest_game = game.game_date
+                        player.handicap = calc_result[0]
+                        player.latest_handicap_change = calc_result[1]
+                        player.latest_game = game.game_date
 
-                            player.save()
+                        player.save()
 
             try:
                 with transaction.atomic():

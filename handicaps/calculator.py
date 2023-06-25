@@ -37,24 +37,15 @@ def stableford_award_calculator(scores_list):
 
     for item in scores_list:
         for player, scores in item.items():
-            name = player.full_name_lastfirst
             # Arrange scores in descending order
             sorted_scores = sorted(scores, reverse=True)
 
             if len(sorted_scores) < 6:
                 break
-            else:
                 # Copy list and only keep the first 6 values
-                top_six_scores = sorted_scores[0:6 or None]
+            top_six_scores = sorted_scores[:6 or None]
 
-                total = 0
-                for score in top_six_scores:
-                    total += score
+            total = sum(top_six_scores)
+            results_list.append({'player': player.full_name_lastfirst, 'result': total})
 
-                results_list.append({'player': name, 'result': total})
-
-    results_list_descending = sorted(
-        results_list, key=lambda x:x['result'], reverse=True
-    )
-
-    return results_list_descending
+    return sorted(results_list, key=lambda x: x['result'], reverse=True)

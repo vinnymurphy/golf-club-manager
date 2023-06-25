@@ -38,7 +38,7 @@ class Game(models.Model):
     game_type = models.ForeignKey('GameType', on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s - %s" % (self.game_date, self.game_type)
+        return f"{self.game_date} - {self.game_type}"
 
 
 class GameScore(models.Model):
@@ -50,7 +50,7 @@ class GameScore(models.Model):
     attendance = models.IntegerField(default=1)
 
     def __str__(self):
-        return "%s - %s - %s" % (self.player, self.game, self.score)
+        return f"{self.player} - {self.game} - {self.score}"
 
 
 class GameType(models.Model):
