@@ -1,26 +1,18 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Sum, Avg
-from django.utils import timezone
 from django.core.urlresolvers import reverse
-from django.forms import formset_factory
 from django.db import IntegrityError, transaction
+from django.db.models import Avg, Sum
+from django.forms import formset_factory
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 
-
-from .models import Player, GameType, GameScore, Game, Grade
-from .forms import (
-    NewGameTypeForm,
-    NewPlayerForm,
-    NewGameForm,
-    NewGameScoreForm,
-    EditPlayerForm,
-    GradeForm,
-    EditGameScoreForm,
-    AttendanceForm,
-)
 from .calculator import handicap_calculator, stableford_award_calculator
+from .forms import (AttendanceForm, EditGameScoreForm, EditPlayerForm,
+                    GradeForm, NewGameForm, NewGameScoreForm, NewGameTypeForm,
+                    NewPlayerForm)
 from .grade import get_graded_list
+from .models import Game, GameScore, GameType, Grade, Player
 
 
 @login_required

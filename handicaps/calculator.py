@@ -2,7 +2,7 @@
 from decimal import Decimal
 from operator import itemgetter
 
-from .models import Player, Game, GameType, GameScore
+from .models import Game, GameScore, GameType, Player
 
 
 def handicap_calculator(player, score, gametype):

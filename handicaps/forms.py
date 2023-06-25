@@ -1,8 +1,9 @@
-from django import forms
-from .models import GameType, Player, Game, GameScore, Grade
-from django.forms.formsets import BaseFormSet
 from functools import partial
 
+from django import forms
+from django.forms.formsets import BaseFormSet
+
+from .models import Game, GameScore, GameType, Grade, Player
 
 DateInput = partial(forms.DateInput, {"type": "date"})
 
