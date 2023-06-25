@@ -8,9 +8,16 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 
 from .calculator import handicap_calculator, stableford_award_calculator
-from .forms import (AttendanceForm, EditGameScoreForm, EditPlayerForm,
-                    GradeForm, NewGameForm, NewGameScoreForm, NewGameTypeForm,
-                    NewPlayerForm)
+from .forms import (
+    AttendanceForm,
+    EditGameScoreForm,
+    EditPlayerForm,
+    GradeForm,
+    NewGameForm,
+    NewGameScoreForm,
+    NewGameTypeForm,
+    NewPlayerForm,
+)
 from .grade import get_graded_list
 from .models import Game, GameScore, GameType, Grade, Player
 
