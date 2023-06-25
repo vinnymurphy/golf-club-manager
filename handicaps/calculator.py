@@ -4,6 +4,7 @@ from operator import itemgetter
 
 from .models import Player, Game, GameType, GameScore
 
+
 def handicap_calculator(player, score, gametype):
     handicap = player.handicap
 
@@ -26,13 +27,14 @@ def handicap_calculator(player, score, gametype):
 
     return new_handicap, handicap_change
 
+
 def stableford_award_calculator(scores_list):
-    '''
+    """
     Receives a list of all active players, and all of their scores within the
     period defined by the user. For each player, identifies the top 6 scores
     achieved, calculates the average of those 6 scores, and returns a dictionary
     with "player":"average score" in descending order
-    '''
+    """
     results_list = []
 
     for item in scores_list:
@@ -43,9 +45,11 @@ def stableford_award_calculator(scores_list):
             if len(sorted_scores) < 6:
                 break
                 # Copy list and only keep the first 6 values
-            top_six_scores = sorted_scores[:6 or None]
+            top_six_scores = sorted_scores[: 6 or None]
 
             total = sum(top_six_scores)
-            results_list.append({'player': player.full_name_lastfirst, 'result': total})
+            results_list.append(
+                {"player": player.full_name_lastfirst, "result": total}
+            )
 
-    return sorted(results_list, key=lambda x: x['result'], reverse=True)
+    return sorted(results_list, key=lambda x: x["result"], reverse=True)
